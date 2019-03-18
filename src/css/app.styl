@@ -1,6 +1,21 @@
 // app global css
 @import '~quasar-variables';
 
+// Header style modeled after the overline option in Quasar's QItemLabel
+.header--overline {
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.16667em;
+  color: rgba(0,0,0,0.7);
+  text-transform: uppercase
+}
+
+.main-content-format {
+  // TODO: scale max-width based on page-width, and account for header
+  margin: 0 auto;
+  max-width: 70%;
+}
+
 #q-app {
   // background: $background;
 }

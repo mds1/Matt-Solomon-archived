@@ -151,7 +151,7 @@
     </q-header>
     <br>
     <!-- END HEADER -->
-    <q-page-container>
+    <q-page-container class="main-content-format">
       <!--
       Here it's where Vue Router injects children
       Page components.

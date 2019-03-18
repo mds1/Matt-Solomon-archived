@@ -139,8 +139,6 @@ export default {
 
 .flex {
   flex-direction: column;
-  max-width: 70%;
-  margin: 0 auto;
 }
 
 .item-label {

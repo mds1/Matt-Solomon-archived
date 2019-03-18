@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <!-- content -->
-    Blog
+    <h2 class="header--overline">Blog</h2>
   </q-page>
 </template>
 
