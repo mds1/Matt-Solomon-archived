@@ -1,13 +1,37 @@
 // app global css
 @import '~quasar-variables';
 
+// =============================================================================
+//                                  FONTS
+// =============================================================================
+
 // Header style modeled after the overline option in Quasar's QItemLabel
-.header--overline {
+h1, h2, h3, .header--overline {
   font-weight: 500;
   line-height: 2rem;
   letter-spacing: 0.16667em;
   color: rgba(0,0,0,0.7);
   text-transform: uppercase
+}
+
+h4, h5 {
+  line-height: 2rem;
+  letter-spacing: 0.083333em;
+  color: rgba(0,0,0,0.7);
+  text-transform: uppercase
+}
+
+p, a, li, .p-font {
+  line-height: 1.5rem;
+  color: rgba(0,0,0,0.7);
+  font-size: 1rem
+}
+
+.subheader--overline {
+  font-weight: 400;
+  line-height: 2rem;
+  color: rgba(0,0,0,0.7);
+  font-variant: all-small-caps
 }
 
 .main-content-format {
@@ -16,9 +40,6 @@
   max-width: 70%;
 }
 
-#q-app {
-  // background: $background;
-}
 
 // Centered elements
 .center-text {
@@ -39,10 +60,6 @@
 .drawer {
   color: $darktext;
   background: linear-gradient(110deg, $secondary 0%, $accent 35%, $primary 80%);
-}
-
-h1, h2, h3 {
-  color: $darktext;
 }
 
 hr {

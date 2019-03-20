@@ -1,7 +1,10 @@
 <template>
   <q-page padding>
     <!-- content -->
-    Blockchain
+    <h2 class="center-text">Blockchain</h2>
+    <p class="center-text">
+      <i>This page is a work in progress...</i>
+    </p>
   </q-page>
 </template>
 

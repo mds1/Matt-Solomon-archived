@@ -18,3 +18,21 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+# Firebase, sources below
+# https://github.com/firebase/firebase-tools/blob/master/.gitignore
+/coverage
+/.nyc_output
+firebase-debug.log
+npm-debug.log
+.npmrc
+
+*.iml
+
+.firebase/*
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+
+.runtimeconfig.json

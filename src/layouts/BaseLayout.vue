@@ -1,8 +1,11 @@
 <template>
   <q-layout
     class="background-image"
-    view="lHh Lpr lFf"
+    view="hhh Lpr fff"
   >
+    <!-- =================================================================== -->
+    <!--                             HEADER                                  -->
+    <!-- =================================================================== -->
     <q-header class="flat">
       <q-toolbar class="header">
         <!-- 1: SITE LOGO -->
@@ -166,6 +169,57 @@
       encapsulate a QPage.
       -->
     </q-page-container>
+
+    <!-- =================================================================== -->
+    <!--                             FOOTER                                  -->
+    <!-- =================================================================== -->
+    <q-footer
+      bordered
+      class="footer"
+    >
+      <q-toolbar>
+        <p
+          class="vertical-center end-left-side footer-font"
+        >matt@mattsolomon.dev</p>
+        <ul class="gt-xs begin-right-side">
+          <!-- GITHUB -->
+          <a
+            href="https://github.com/mds1"
+            target="_blank"
+          >
+            <img
+              alt="GitHub"
+              src="../statics/logos/github.svg"
+              width="25rem"
+            >
+          </a>
+          <!-- TWITTER -->
+          &nbsp;&nbsp;
+          <a
+            href="https://twitter.com/msolomon44"
+            target="_blank"
+          >
+            <img
+              alt="Twitter"
+              src="../statics/logos/twitter.svg"
+              width="25rem"
+            >
+          </a>
+          <!-- MEDIUM -->
+          &nbsp;&nbsp;
+          <a
+            href="https://medium.com/@msolomon44"
+            target="_blank"
+          >
+            <img
+              alt="Medium"
+              src="../statics/logos/medium.svg"
+              width="25rem"
+            >
+          </a>
+        </ul>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -229,5 +283,21 @@ export default {
 
 .background-image {
   background-image: url('../assets/background.svg');
+}
+
+.footer {
+  font-size: 1em;
+}
+
+.footer-font {
+  color: $lighttext;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 </style>

@@ -12,7 +12,7 @@
             >BLOCKCHAIN</q-item-label>
           </router-link>
           <!-- BLOCKCHAIN DESCRIPTION -->
-          <q-item-label>
+          <q-item-label class="p-font">
             Graduate of the
             <a
               href="https://consensys.net/academy/bootcamp/"
@@ -43,7 +43,7 @@
         </q-item-section>
         <!-- BLOCKCHAIN IMAGE -->
         <q-item-section thumbnail>
-          <img src="../../src/statics/quasar-logo.png">
+          <!-- <img src="../../src/statics/quasar-logo.png"> -->
         </q-item-section>
       </q-item>
 
@@ -59,7 +59,7 @@
             >AUTOMATION</q-item-label>
           </router-link>
           <!-- AUTOMATION DESCRIPTION -->
-          <q-item-label>
+          <q-item-label class="p-font">
             About three years experience developing software and automation tools,
             including:
             <ul>
@@ -75,7 +75,7 @@
         </q-item-section>
         <!-- AUTOMATION IMAGE -->
         <q-item-section thumbnail>
-          <img src="../../src/statics/quasar-logo.png">
+          <!-- <img src="../../src/statics/quasar-logo.png"> -->
         </q-item-section>
       </q-item>
 
@@ -91,14 +91,14 @@
             >BLOG</q-item-label>
           </router-link>
           <!-- BLOG DESCRIPTION -->
-          <q-item-label>
+          <q-item-label class="p-font">
             Thoughts, tutorials, and whatever else I feel like
             writing about
           </q-item-label>
         </q-item-section>
         <!-- BLOG IMAGE -->
         <q-item-section thumbnail>
-          <img src="../../src/statics/quasar-logo.png">
+          <!-- <img src="../../src/statics/quasar-logo.png"> -->
         </q-item-section>
       </q-item>
 
@@ -114,17 +114,19 @@
             >RESOURCES</q-item-label>
           </router-link>
           <!-- RESOURCES DESCRIPTION -->
-          <q-item-label>
+          <q-item-label class="p-font">
             A collection of websites, articles, tools, and other helpful
             resources
           </q-item-label>
         </q-item-section>
         <!-- RESOURCES IMAGE -->
         <q-item-section thumbnail>
-          <img src="../../src/statics/quasar-logo.png">
+          <!-- <img src="../../src/statics/quasar-logo.png"> -->
         </q-item-section>
       </q-item>
     </q-list>
+    <br>
+    <br>
   </q-page>
 </template>
 

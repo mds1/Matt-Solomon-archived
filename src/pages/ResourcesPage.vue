@@ -1,7 +1,10 @@
 <template>
   <q-page padding>
     <!-- content -->
-    Work in progress
+    <h2 class="center-text">Resources</h2>
+    <p class="center-text">
+      <i>This page is a work in progress...</i>
+    </p>
   </q-page>
 </template>
 
