@@ -25,6 +25,11 @@ const routes = [
         path: '/resources',
         component: () => import('pages/ResourcesPage.vue'),
       },
+      {
+        name: 'docker',
+        path: '/docker',
+        component: () => import('pages/DockerPage.vue'),
+      },
     ],
   },
 ];
