@@ -6,8 +6,8 @@
     <!-- =================================================================== -->
     <!--                             HEADER                                  -->
     <!-- =================================================================== -->
-    <q-header class="flat">
-      <q-toolbar class="header">
+    <q-header class="flat header">
+      <q-toolbar class="all-content-format">
         <!-- 1: SITE LOGO -->
         <!-- TODO: Add logo here -->
         <!-- <img src="statics/logos/fido-logo.png" height="40 rem"> -->
@@ -37,8 +37,7 @@
           @click="rightDrawerOpen = !rightDrawerOpen"
           aria-label="Menu"
           class="begin-right-side lt-sm menu-button"
-          dense
-          flat
+          outline
         >
           <!-- <q-icon name="fas fa-bars"/> -->
           Menu
@@ -154,7 +153,7 @@
     </q-header>
     <br>
     <!-- END HEADER -->
-    <q-page-container class="main-content-format">
+    <q-page-container class="all-content-format">
       <!--
       Here it's where Vue Router injects children
       Page components.
@@ -177,7 +176,7 @@
       bordered
       class="footer"
     >
-      <q-toolbar>
+      <q-toolbar class="all-content-format">
         <p
           class="vertical-center end-left-side footer-font"
         >matt@mattsolomon.dev</p>
@@ -275,18 +274,8 @@ export default {
   margin-right: 1 rem;
 }
 
-// Background made with https://trianglify.io/, width="1920" height="2880"
-.header {
-  background-image: url('../assets/background.svg');
-  font-size: 1.25em;
-}
-
-.background-image {
-  background-image: url('../assets/background.svg');
-}
-
 .footer {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .footer-font {
