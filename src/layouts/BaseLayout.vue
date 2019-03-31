@@ -1,5 +1,8 @@
 <template>
-  <q-layout class="background-image" view="hhh Lpr fff">
+  <q-layout
+    class="background-image"
+    view="hhh Lpr fff"
+  >
     <!-- =================================================================== -->
     <!--                             HEADER                                  -->
     <!-- =================================================================== -->
@@ -9,7 +12,10 @@
         <!-- TODO: Add logo here -->
         <!-- <img src="statics/logos/fido-logo.png" height="40 rem"> -->
         <!-- 2: SITE NAME/SUBTITLE -->
-        <router-link class="no-text-decoration end-left-side" to="/">
+        <router-link
+          class="no-text-decoration end-left-side"
+          to="/"
+        >
           <q-toolbar-title>Matt Solomon
             <div slot="subtitle">Blockchain and automation</div>
           </q-toolbar-title>
@@ -95,30 +101,49 @@
           v-model="rightDrawerOpen"
         >
           <!-- BEGIN DRAWER MENU SECTION -->
-          <q-list link no-border>
+          <q-list
+            link
+            no-border
+          >
             <!-- LIST OF MENU ITEMS -->
             <!-- ITEM: Home -->
-            <q-item :to="{ name: 'home' }" exact separator>
+            <q-item
+              :to="{ name: 'home' }"
+              exact
+              separator
+            >
               <q-item-section>Home</q-item-section>
             </q-item>
 
             <!-- ITEM: Blockchain -->
-            <q-item :to="{ name: 'blockchain' }" separator>
+            <q-item
+              :to="{ name: 'blockchain' }"
+              separator
+            >
               <q-item-section>Blockckain</q-item-section>
             </q-item>
 
             <!-- ITEM: Automation -->
-            <q-item :to="{ name: 'automation' }" separator>
+            <q-item
+              :to="{ name: 'automation' }"
+              separator
+            >
               <q-item-section>Automation</q-item-section>
             </q-item>
 
             <!-- ITEM: Blog -->
-            <q-item :to="{ name: 'blog' }" separator>
+            <q-item
+              :to="{ name: 'blog' }"
+              separator
+            >
               <q-item-section>Blog</q-item-section>
             </q-item>
 
             <!-- ITEM: Resources -->
-            <q-item :to="{ name: 'resources' }" separator>
+            <q-item
+              :to="{ name: 'resources' }"
+              separator
+            >
               <q-item-section>Resources</q-item-section>
             </q-item>
           </q-list>
@@ -136,7 +161,7 @@
       <router-view/> tag below can be replaced by an
       actual page content should you wish to do so.
       -->
-      <router-view/>
+      <router-view />
       <!--
       First child of QPageContainer must be a QPage,
       so make sure that your layout route children components
@@ -147,23 +172,47 @@
     <!-- =================================================================== -->
     <!--                             FOOTER                                  -->
     <!-- =================================================================== -->
-    <q-footer bordered class="footer">
+    <q-footer
+      bordered
+      class="footer"
+    >
       <q-toolbar class="all-content-format">
         <p class="vertical-center end-left-side footer-font">matt@mattsolomon.dev</p>
         <ul class="gt-xs begin-right-side">
           <!-- GITHUB -->
-          <a href="https://github.com/mds1" target="_blank">
-            <img alt="GitHub" src="../statics/logos/github.svg" width="25rem">
+          <a
+            href="https://github.com/mds1"
+            target="_blank"
+          >
+            <img
+              alt="GitHub"
+              src="../statics/logos/github.svg"
+              width="25rem"
+            >
           </a>
           <!-- TWITTER -->
           &nbsp;&nbsp;
-          <a href="https://twitter.com/msolomon44" target="_blank">
-            <img alt="Twitter" src="../statics/logos/twitter.svg" width="25rem">
+          <a
+            href="https://twitter.com/msolomon44"
+            target="_blank"
+          >
+            <img
+              alt="Twitter"
+              src="../statics/logos/twitter.svg"
+              width="25rem"
+            >
           </a>
           <!-- MEDIUM -->
           &nbsp;&nbsp;
-          <a href="https://medium.com/@msolomon44" target="_blank">
-            <img alt="Medium" src="../statics/logos/medium.svg" width="25rem">
+          <a
+            href="https://medium.com/@msolomon44"
+            target="_blank"
+          >
+            <img
+              alt="Medium"
+              src="../statics/logos/medium.svg"
+              width="25rem"
+            >
           </a>
         </ul>
       </q-toolbar>
@@ -225,6 +274,7 @@ export default {
 
 .footer {
   font-size: 1rem;
+  background: $accent;
 }
 
 .footer-font {
@@ -237,5 +287,14 @@ export default {
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+// Format social media icons
+ul img {
+  // width: 1.5rem;
+  // Invert SVG icons since we have a dark background
+  // Source: https://stackoverflow.com/questions/13325798/invert-colors-of-an-image-in-css-or-javascript
+  -webkit-filter: invert(1);
+  filter: invert(1);
 }
 </style>

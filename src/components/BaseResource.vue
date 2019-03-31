@@ -1,7 +1,11 @@
 <template>
   <div>
-    <a :href="this.url" class="no-text-decoration" target="_blank">
-      <q-item>
+    <a
+      :href="this.url"
+      class="no-text-decoration"
+      target="_blank"
+    >
+      <q-item class='no-left-padding'>
         <q-item-section>
           <q-item-label>{{this.name}}</q-item-label>
           <q-item-label caption>{{this.description}}</q-item-label>

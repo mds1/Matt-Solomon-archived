@@ -28,7 +28,7 @@ module.exports = {
     process: true
   },
 
-  // add your custom rules here
+  // add your custom rules hereva
   rules: {
     "no-param-reassign": "off",
 

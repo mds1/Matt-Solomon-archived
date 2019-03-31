@@ -14,7 +14,7 @@
 }
 
 // =============================================================================
-//                             SITE DIMENSIONS
+//                       SITE DIMENSIONS AND SPACING
 // =============================================================================
 
 .all-content-format {
@@ -22,6 +22,10 @@
   max-width: 1023px
   margin: 0 auto
   }
+
+.no-left-padding {
+  padding-left: 0;
+}
 
 // =============================================================================
 //                                  FONTS
@@ -78,11 +82,11 @@ p, a, li, .p-font {
 // Menu drawer CSS
 .drawer {
   color: $darktext;
-  background: linear-gradient(110deg, $secondary 0%, $accent 35%, $primary 80%);
+  background-image: url('../assets/background.svg');
 }
 
 hr {
-  border: 1px solid $primary;
+  border: 1px solid $accent;
   width: 100%;
   margin-top: 2%;
   margin-bottom: 3%;

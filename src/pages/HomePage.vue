@@ -23,9 +23,7 @@
               <li>Smart contract development, testing, and deployment</li>
               <li>Creating web-based front ends to interact with smart contracts</li>
               <li>
-                Basic security audits (these audits are NOT suitable replacements
-                for full audits from established companies like Trail of Bits and
-                ConsenSys Diligence)
+                Basic security audits
               </li>
               <li>
                 Decentralized file storage with

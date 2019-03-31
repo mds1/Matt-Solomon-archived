@@ -7,16 +7,18 @@
     </p>
 
     <!-- BEGIN RESOURCE LIST -->
-    <!-- Use v-for to list all questions used for calculating a budget-->
-    <div :key="resource.id" v-for="resource in resources">
+    <div
+      :key="resource.id"
+      v-for="resource in resources"
+    >
       <!-- IF RESOURCE IS FIRST OF ITS CATEGORY, SHOW CATEGORY -->
       <div v-if="shouldShowCategory(resource.id)">
-        <h3>{{resource.category.text}}</h3>
-        <h4>{{resource.subcategory}}</h4>
+        <h4><b>{{resource.category.text}}</b></h4>
+        <h5>{{resource.subcategory}}</h5>
+        <!-- Reduce spacing between header and first item -->
+        <div class="negative-top-margin"></div>
       </div>
       <!-- DISPLAY RESOURCES -->
-      <!-- Inputs use a dynamic v-model name -->
-      <!-- See: https://stackoverflow.com/q/43364487/10152004 -->
       <div class="row inline justify-between">
         <base-resource
           :name="resource.name"
@@ -24,8 +26,6 @@
           :url="resource.url"
         />
       </div>
-      <!-- COLLAPSIBLE (TODO): Contains addition info/details -->
-      <!-- Place collapsible here -->
     </div>
   </q-page>
 </template>
@@ -73,4 +73,7 @@ export default {
 </script>
 
 <style>
+.negative-top-margin {
+  margin-top: -1rem;
+}
 </style>
