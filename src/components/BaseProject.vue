@@ -38,7 +38,7 @@
           :key="index"
         >
           <ul>
-            <li>
+            <li class='reduce-li-spacing'>
               <a
                 :href="tool.url"
                 target="_blank"
