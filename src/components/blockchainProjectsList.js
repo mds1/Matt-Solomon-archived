@@ -28,15 +28,15 @@ const items = [
     urlHome: 'https://survivor-frontend.netlify.com/',
     showIf: true,
   },
-  {
-    name: 'NFL Survivor',
-    description: 'blah blah',
-    tools: [{}],
-    urlGit: 'https://github.com/mds1/survivor-frontend',
-    urlHome: 'https://survivor-frontend.netlify.com/',
-    imgPath: 'statics/projects/blockchain/survivor.png',
-    showIf: true,
-  },
+  // {
+  //   name: 'NFL Survivor',
+  //   description: 'blah blah',
+  //   tools: [{}],
+  //   urlGit: 'https://github.com/mds1/survivor-frontend',
+  //   urlHome: 'https://survivor-frontend.netlify.com/',
+  //   imgPath: 'statics/projects/blockchain/survivor.png',
+  //   showIf: true,
+  // },
 ];
 
 // For each item, add ID's based on the order they are in
