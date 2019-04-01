@@ -179,7 +179,19 @@
       <q-toolbar class="all-content-format">
         <p class="vertical-center end-left-side footer-font">matt@mattsolomon.dev</p>
         <ul class="gt-xs begin-right-side">
+          <!-- LINKEDIN -->
+          <a
+            href="https://www.linkedin.com/in/msolomon4/"
+            target="_blank"
+          >
+            <img
+              alt="LinkedIn"
+              src="../statics/logos/linkedin.svg"
+              width="25rem"
+            >
+          </a>
           <!-- GITHUB -->
+          &nbsp;&nbsp;
           <a
             href="https://github.com/mds1"
             target="_blank"
