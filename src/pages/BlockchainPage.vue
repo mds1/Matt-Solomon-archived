@@ -12,6 +12,12 @@
       <li>For source code, click the GitHub logo next to the project title</li>
       <li>For a hosted version of the project, click the image shown</li>
     </ul>
+    <p class='text-caption'>
+      <em>
+        As you may notice, I'm a developer, not a designer, so my projects
+        often look quite similar. However, I can implement a design when given one.
+      </em>
+    </p>
 
     <div
       :key="project.id"
