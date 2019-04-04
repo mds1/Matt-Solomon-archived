@@ -9,8 +9,18 @@
     <q-header class="flat header">
       <q-toolbar class="all-content-format">
         <!-- 1: SITE LOGO -->
-        <!-- TODO: Add logo here -->
-        <!-- <img src="statics/logos/fido-logo.png" height="40 rem"> -->
+        <router-link
+          class="no-text-decoration"
+          to="/"
+        >
+          <img
+            src="statics/favicons/main-404x404.jpeg"
+            height="40 rem"
+            class="q-mr-sm"
+            style="border-radius: 50%;"
+          >
+        </router-link>
+
         <!-- 2: SITE NAME/SUBTITLE -->
         <router-link
           class="no-text-decoration end-left-side"

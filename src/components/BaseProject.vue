@@ -55,7 +55,7 @@
           :href="project.urlHome"
           target="_blank"
         >
-          <q-img src="statics/projects/blockchain/survivor.png" /></a>
+          <q-img :src="project.imgPath" /></a>
       </div>
     </div>
 
