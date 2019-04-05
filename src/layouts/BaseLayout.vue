@@ -190,7 +190,7 @@
         <div class="col-auto">
           <a
             href="mailto:matt@mattsolomon.dev"
-            class="vertical-center footer-font no-text-deocation"
+            class="email-address vertical-center footer-font"
           >
             matt@mattsolomon.dev
           </a>
@@ -279,6 +279,12 @@ export default {
 .no-text-decoration, a:link {
   text-decoration: none;
   color: $darktext;
+}
+
+// for email in footer
+.email-address {
+  text-decoration: none;
+  color: $lighttext !important;
 }
 
 // split header into left and right halves
