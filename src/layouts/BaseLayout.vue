@@ -184,59 +184,68 @@
     <!-- =================================================================== -->
     <q-footer
       bordered
-      class="footer"
+      class="row footer"
     >
-      <q-toolbar class="all-content-format">
-        <p class="vertical-center end-left-side footer-font">matt@mattsolomon.dev</p>
-        <ul class="gt-xs begin-right-side">
-          <!-- LINKEDIN -->
+      <q-toolbar class="row justify-between all-content-format">
+        <div class="col-auto">
           <a
-            href="https://www.linkedin.com/in/msolomon4/"
-            target="_blank"
+            href="mailto:matt@mattsolomon.dev"
+            class="vertical-center footer-font no-text-deocation"
           >
-            <img
-              alt="LinkedIn"
-              src="../statics/logos/linkedin.svg"
-              width="25rem"
-            >
+            matt@mattsolomon.dev
           </a>
-          <!-- GITHUB -->
-          &nbsp;&nbsp;
-          <a
-            href="https://github.com/mds1"
-            target="_blank"
-          >
-            <img
-              alt="GitHub"
-              src="../statics/logos/github.svg"
-              width="25rem"
+        </div>
+        <div class="col-auto">
+          <ul>
+            <!-- LINKEDIN -->
+            <a
+              href="https://www.linkedin.com/in/msolomon4/"
+              target="_blank"
             >
-          </a>
-          <!-- TWITTER -->
-          &nbsp;&nbsp;
-          <a
-            href="https://twitter.com/msolomon44"
-            target="_blank"
-          >
-            <img
-              alt="Twitter"
-              src="../statics/logos/twitter.svg"
-              width="25rem"
+              <img
+                alt="LinkedIn"
+                src="../statics/logos/linkedin.svg"
+                width="25rem"
+              >
+            </a>
+            <!-- GITHUB -->
+            &nbsp;&nbsp;
+            <a
+              href="https://github.com/mds1"
+              target="_blank"
             >
-          </a>
-          <!-- MEDIUM -->
-          &nbsp;&nbsp;
-          <a
-            href="https://medium.com/@msolomon44"
-            target="_blank"
-          >
-            <img
-              alt="Medium"
-              src="../statics/logos/medium.svg"
-              width="25rem"
+              <img
+                alt="GitHub"
+                src="../statics/logos/github.svg"
+                width="25rem"
+              >
+            </a>
+            <!-- TWITTER -->
+            &nbsp;&nbsp;
+            <a
+              href="https://twitter.com/msolomon44"
+              target="_blank"
             >
-          </a>
-        </ul>
+              <img
+                alt="Twitter"
+                src="../statics/logos/twitter.svg"
+                width="25rem"
+              >
+            </a>
+            <!-- MEDIUM -->
+            &nbsp;&nbsp;
+            <a
+              href="https://medium.com/@msolomon44"
+              target="_blank"
+            >
+              <img
+                alt="Medium"
+                src="../statics/logos/medium.svg"
+                width="25rem"
+              >
+            </a>
+          </ul>
+        </div>
       </q-toolbar>
     </q-footer>
   </q-layout>
@@ -318,5 +327,11 @@ ul img {
   // Source: https://stackoverflow.com/questions/13325798/invert-colors-of-an-image-in-css-or-javascript
   -webkit-filter: invert(1);
   filter: invert(1);
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 </style>
