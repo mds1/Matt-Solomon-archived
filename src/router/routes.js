@@ -5,16 +5,16 @@ const routes = [
     component: () => import('layouts/BaseLayout.vue'),
     children: [
       { name: 'home', path: '', component: () => import('pages/HomePage.vue') },
-      {
-        name: 'blockchain',
-        path: '/blockchain',
-        component: () => import('pages/BlockchainPage.vue'),
-      },
-      {
-        name: 'automation',
-        path: '/automation',
-        component: () => import('pages/AutomationPage.vue'),
-      },
+      // {
+      //   name: 'blockchain',
+      //   path: '/blockchain',
+      //   component: () => import('pages/BlockchainPage.vue'),
+      // },
+      // {
+      //   name: 'automation',
+      //   path: '/automation',
+      //   component: () => import('pages/AutomationPage.vue'),
+      // },
       {
         name: 'blog',
         path: '/blog',

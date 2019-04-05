@@ -25,6 +25,12 @@ export const categories = {
       consensus: 'Consensus Mechanisms',
     },
   },
+  gnc: {
+    text: 'Guidance, Navigation, & Control',
+    subcategories: {
+      navigation: 'Navigation',
+    },
+  },
   automation: {
     text: 'Automation',
     subcategories: {
@@ -62,6 +68,18 @@ const resourceList = [
     url: 'https://dev.to/5chdn/ethereum-node-configuration-modes-cheat-sheet-25l8',
     category: categories.blockchain,
     subcategory: categories.blockchain.subcategories.general,
+    moreInfo: undefined,
+    showIf: true,
+  },
+  // ===========================================================================
+  //                       GUIDANCE, NAVIGATION, AND CONTROL
+  // ===========================================================================
+  {
+    name: 'The Extended Kalman Filter: An Interactive Tutorial for Non-Experts',
+    description: 'A fantastic introduction to Kalman Filters',
+    url: 'https://home.wlu.edu/~levys/kalman_tutorial/',
+    category: categories.gnc,
+    subcategory: categories.gnc.subcategories.navigation,
     moreInfo: undefined,
     showIf: true,
   },
@@ -120,24 +138,6 @@ const resourceList = [
   //                             MISCELLANEOUS
   // ===========================================================================
   {
-    name: 'How to Be Successful',
-    description: 'Thirteen thoughts about how to achieve outlier success',
-    url: 'http://blog.samaltman.com/how-to-be-successful',
-    category: categories.misc,
-    subcategory: undefined,
-    moreInfo: undefined,
-    showIf: true,
-  },
-  {
-    name: '1,000 True Fans',
-    description: 'To be a successful creator you don’t need millions of dollars, fans, or customers',
-    url: 'https://kk.org/thetechnium/1000-true-fans/',
-    category: categories.misc,
-    subcategory: undefined,
-    moreInfo: undefined,
-    showIf: true,
-  },
-  {
     name: 'Spaced Repetition',
     description: 'Efficient memorization using the spacing effect: literature review of widespread applicability, tips on use & what it’s good for',
     url: 'https://www.gwern.net/Spaced-repetition',
@@ -150,6 +150,24 @@ const resourceList = [
     name: 'Augmenting Long-Term Memory',
     description: 'Investigation of personal memory systems',
     url: 'http://augmentingcognition.com/ltm.html',
+    category: categories.misc,
+    subcategory: undefined,
+    moreInfo: undefined,
+    showIf: true,
+  },
+  {
+    name: 'How to Be Successful',
+    description: 'Thirteen thoughts about how to achieve outlier success',
+    url: 'http://blog.samaltman.com/how-to-be-successful',
+    category: categories.misc,
+    subcategory: undefined,
+    moreInfo: undefined,
+    showIf: true,
+  },
+  {
+    name: '1,000 True Fans',
+    description: 'To be a successful creator you don’t need millions of dollars, fans, or customers',
+    url: 'https://kk.org/thetechnium/1000-true-fans/',
     category: categories.misc,
     subcategory: undefined,
     moreInfo: undefined,

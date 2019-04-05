@@ -66,22 +66,22 @@
           </router-link>
 
           <!-- BLOCKCHAIN -->
-          <router-link
+          <!-- <router-link
             :to="{ name: 'blockchain' }"
             active-class="active-page"
             class="no-text-decoration nav"
           >
             <a>Blockchain</a>
-          </router-link>
+          </router-link> -->
 
           <!-- AUTOMATION -->
-          <router-link
+          <!-- <router-link
             :to="{ name: 'automation' }"
             active-class="active-page"
             class="no-text-decoration nav"
           >
             <a>Automation</a>
-          </router-link>
+          </router-link> -->
 
           <!-- BLOG -->
           <router-link
@@ -126,20 +126,20 @@
             </q-item>
 
             <!-- ITEM: Blockchain -->
-            <q-item
+            <!-- <q-item
               :to="{ name: 'blockchain' }"
               separator
             >
               <q-item-section>Blockckain</q-item-section>
-            </q-item>
+            </q-item> -->
 
             <!-- ITEM: Automation -->
-            <q-item
+            <!-- <q-item
               :to="{ name: 'automation' }"
               separator
             >
               <q-item-section>Automation</q-item-section>
-            </q-item>
+            </q-item> -->
 
             <!-- ITEM: Blog -->
             <q-item

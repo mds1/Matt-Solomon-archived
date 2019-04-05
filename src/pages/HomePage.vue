@@ -5,12 +5,12 @@
       <q-item class="row-6">
         <q-item-section>
           <!-- BLOCKCHAIN ROUTER LINK -->
-          <router-link :to="{ name: 'blockchain'}">
-            <q-item-label
-              class="item-label"
-              overline
-            >BLOCKCHAIN</q-item-label>
-          </router-link>
+          <!-- <router-link :to="{ name: 'blockchain'}"> -->
+          <q-item-label
+            class="item-label"
+            overline
+          >BLOCKCHAIN</q-item-label>
+          <!-- </router-link> -->
           <!-- BLOCKCHAIN DESCRIPTION -->
           <q-item-label class="p-font">
             Graduate of the
@@ -45,17 +45,55 @@
         </q-item-section>
       </q-item>
 
+      <!-- NAVIGATION -->
+      <hr>
+      <q-item class="row-6">
+        <q-item-section>
+          <!-- AUTOMATION ROUTER LINK -->
+          <!-- <router-link :to="{ name: 'automation'}"> -->
+          <q-item-label
+            class="item-label"
+            overline
+          >GUIDANCE, NAVIGATION, & CONTROL</q-item-label>
+          <!-- </router-link> -->
+          <!-- AUTOMATION DESCRIPTION -->
+          <q-item-label class="p-font">
+            About four years experience in Guidance, Navigation, and Control
+            (GN&C), including:
+            <ul>
+              <li>
+                Development of <a
+                  target="_blank"
+                  href="https://github.com/mds1/path-planning"
+                >Hierarchical D* Lite</a>, a real-time path-planning algorithm
+                for UAVs in unknown environments
+              </li>
+              <li>Analysis and development of Kalman Filters for spacecraft</li>
+              <li>
+                Development and maintenance of various covariance analysis
+                and trajectory analysis tools
+              </li>
+
+            </ul>
+          </q-item-label>
+        </q-item-section>
+        <!-- AUTOMATION IMAGE -->
+        <q-item-section thumbnail>
+          <!-- <img src="../../src/statics/quasar-logo.png"> -->
+        </q-item-section>
+      </q-item>
+
       <!-- AUTOMATION -->
       <hr>
       <q-item class="row-6">
         <q-item-section>
           <!-- AUTOMATION ROUTER LINK -->
-          <router-link :to="{ name: 'automation'}">
-            <q-item-label
-              class="item-label"
-              overline
-            >AUTOMATION</q-item-label>
-          </router-link>
+          <!-- <router-link :to="{ name: 'automation'}"> -->
+          <q-item-label
+            class="item-label"
+            overline
+          >AUTOMATION</q-item-label>
+          <!-- </router-link> -->
           <!-- AUTOMATION DESCRIPTION -->
           <q-item-label class="p-font">
             About three years experience developing software and automation tools,
@@ -113,8 +151,8 @@
           </router-link>
           <!-- RESOURCES DESCRIPTION -->
           <q-item-label class="p-font">
-            A collection of websites, articles, tools, and other helpful
-            resources
+            A collection of websites, articles, tools, and other resources
+            that I've found useful or interesting at some point
           </q-item-label>
         </q-item-section>
         <!-- RESOURCES IMAGE -->

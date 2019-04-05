@@ -58,7 +58,8 @@ const items = [
     </ul>.`,
     tools: [
       { name: 'Python', url: 'https://www.python.org' },
-      { name: 'LaTeX', url: 'https://www.latex-project.org' },
+      { name: 'Scrapy', url: 'https://scrapy.org' },
+      { name: 'Selenium', url: 'https://www.seleniumhq.org' },
 
     ],
     urlGit: 'https://github.com/mds1/path-planning',

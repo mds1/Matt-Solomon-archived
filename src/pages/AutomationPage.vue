@@ -5,7 +5,7 @@
     <p class="center-text">
       <i>This page is a work in progress...</i>
     </p>
-    <p>
+    <!-- <p>
       A list of past projects is shown below
     </p>
     <ul>
@@ -25,19 +25,19 @@
     >
 
       <base-project :project=project />
-    </div>
+    </div> -->
 
   </q-page>
 </template>
 
 <script>
-import BaseProject from 'components/BaseProject.vue';
+// import BaseProject from 'components/BaseProject.vue';
 import { projects } from 'components/automationProjectsList';
 
 export default {
   name: 'AutomationPage',
   components: {
-    BaseProject,
+    // BaseProject,
   },
   data() {
     return {
