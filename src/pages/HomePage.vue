@@ -13,12 +13,12 @@
           <!-- </router-link> -->
           <!-- BLOCKCHAIN DESCRIPTION -->
           <q-item-label class="p-font">
-            Graduate of the
+            Graduate of the 2018
             <a
               href="https://consensys.net/academy/bootcamp/"
               target="_blank"
             >ConsenSys Academy Developer Program</a>,
-            with about two years experience in Ethereum development. Experienced in:
+            with about a year of experience in Ethereum development, including:
             <ul>
               <li>Smart contract development, testing, and deployment</li>
               <li>Creating web-based front ends to interact with smart contracts</li>
@@ -33,8 +33,7 @@
                 >IPFS</a>
               </li>
               <li>
-                General advising needs, such as development guideance or whitepaper
-                reviews
+                General advising needs
               </li>
             </ul>
           </q-item-label>
