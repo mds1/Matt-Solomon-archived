@@ -205,7 +205,7 @@
               <img
                 alt="LinkedIn"
                 src="../statics/logos/linkedin.svg"
-                width="25rem"
+                width="20rem"
               >
             </a>
             <!-- GITHUB -->
@@ -217,7 +217,7 @@
               <img
                 alt="GitHub"
                 src="../statics/logos/github.svg"
-                width="25rem"
+                width="20rem"
               >
             </a>
             <!-- TWITTER -->
@@ -229,7 +229,7 @@
               <img
                 alt="Twitter"
                 src="../statics/logos/twitter.svg"
-                width="25rem"
+                width="20rem"
               >
             </a>
             <!-- MEDIUM -->
@@ -241,7 +241,19 @@
               <img
                 alt="Medium"
                 src="../statics/logos/medium.svg"
-                width="25rem"
+                width="20rem"
+              >
+            </a>
+            <!-- REDDIT -->
+            &nbsp;&nbsp;
+            <a
+              href="https://www.reddit.com/user/msolomon4"
+              target="_blank"
+            >
+              <img
+                alt="Reddit"
+                src="../statics/logos/reddit.svg"
+                width="20rem"
               >
             </a>
           </ul>
