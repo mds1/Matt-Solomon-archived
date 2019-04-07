@@ -12,8 +12,13 @@
       v-for="resource in resources"
     >
       <!-- IF RESOURCE IS FIRST OF ITS CATEGORY, SHOW CATEGORY -->
-      <div v-if="shouldShowCategory(resource.id)">
+      <div v-if="shouldShowCategory(resource.id, 'category')">
         <h4><b>{{resource.category.text}}</b></h4>
+        <!-- Reduce spacing between header and first item -->
+        <div class="negative-top-margin"></div>
+      </div>
+      <!-- IF RESOURCE IS FIRST OF ITS SUBCATEGORY, SHOW SUBCATEGORY -->
+      <div v-if="shouldShowCategory(resource.id, 'subcategory')">
         <h5>{{resource.subcategory}}</h5>
         <!-- Reduce spacing between header and first item -->
         <div class="negative-top-margin"></div>
@@ -53,16 +58,30 @@ export default {
      * resource is the first of it's category, the category should be displayd,
      * acting as a section separator
      * @param {integer} id resource id number
+     * @param {string} 'category' to check category, 'subcategory', top check
+     * subcategories
      * @returns {bool} whether or not to show the resource category
      */
-    shouldShowCategory(id) {
+    shouldShowCategory(id, type) {
       // Conditions when category should be shown
       //    1. This is the first resource
       //    2. The category of this resource differs from the category of the
       //       previous resource
+
+      // Check category
+      if (type === 'category') {
+        if (
+          id === 0
+          || this.resources[id].category !== this.resources[id - 1].category
+        ) {
+          return true;
+        }
+        return false;
+      }
+      // Otherwise assume type equals subcategory
       if (
         id === 0
-        || this.resources[id].category !== this.resources[id - 1].category
+        || this.resources[id].subcategory !== this.resources[id - 1].subcategory
       ) {
         return true;
       }
