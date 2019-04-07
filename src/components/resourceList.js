@@ -54,6 +54,15 @@ const resourceList = [
   //                                BLOCKCHAINS
   // ===========================================================================
   {
+    name: 'Maker for Dummies: A Plain English Explanation of the Dai Stablecoin',
+    description: 'A fairly detailed introduction and overview of Dai',
+    url: 'https://medium.com/cryptolinks/maker-for-dummies-a-plain-english-explanation-of-the-dai-stablecoin-e4481d79b90',
+    category: categories.blockchain,
+    subcategory: categories.blockchain.subcategories.general,
+    moreInfo: undefined,
+    showIf: true,
+  },
+  {
     name: 'A Crypto Thesis',
     description: 'A thesis on open financial systems',
     url: 'https://medium.com/@PanteraCapital/a-crypto-thesis-47eaacf861ca',
