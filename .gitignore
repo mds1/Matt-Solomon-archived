@@ -1,3 +1,6 @@
+# AWS
+*.pem
+
 .quasar
 .DS_Store
 .thumbs.db
