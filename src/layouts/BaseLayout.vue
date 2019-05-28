@@ -6,7 +6,7 @@
     <!-- =================================================================== -->
     <!--                             HEADER                                  -->
     <!-- =================================================================== -->
-    <q-header class="flat header">
+    <q-header class="header shadow-3">
       <q-toolbar class="all-content-format">
         <!-- 1: SITE LOGO -->
         <router-link
@@ -15,19 +15,19 @@
         >
           <img
             src="statics/favicons/main-404x404.jpeg"
-            height="40 rem"
-            class="q-mr-sm"
+            height="60 rem"
+            class="q-ma-md"
             style="border-radius: 50%;"
           >
         </router-link>
 
         <!-- 2: SITE NAME/SUBTITLE -->
         <router-link
-          class="no-text-decoration end-left-side"
+          class="no-text-decoration float-to-left"
           to="/"
         >
-          <q-toolbar-title>Matt Solomon
-            <div slot="subtitle">Blockchain and automation</div>
+          <q-toolbar-title class='header--title'>Matt Solomon
+            <div class='header--subtitle'>Blockchain and automation</div>
           </q-toolbar-title>
         </router-link>
 
@@ -46,7 +46,7 @@
         <q-btn
           @click="rightDrawerOpen = !rightDrawerOpen"
           aria-label="Menu"
-          class="begin-right-side lt-sm menu-button"
+          class="float-to-right lt-sm menu-button"
           outline
         >
           <!-- <q-icon name="fas fa-bars"/> -->
@@ -54,7 +54,7 @@
         </q-btn>
 
         <!-- 3B. MENU ITEMS (for large screens) -->
-        <ul class="gt-xs">
+        <ul class="gt-xs ">
           <!-- HOME -->
           <router-link
             :to="{ name: 'home' }"
@@ -282,6 +282,10 @@ export default {
 <style lang='stylus' scoped>
 @import '~quasar-variables';
 
+// =============================================================================
+// HEADER
+// =============================================================================
+
 // menu button
 .menu-button {
   color: $darktext;
@@ -293,19 +297,13 @@ export default {
   color: $darktext;
 }
 
-// for email in footer
-.email-address {
-  text-decoration: none;
-  color: $lighttext !important;
-}
-
 // split header into left and right halves
 // source: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container#Using_auto_margins_for_main_axis_alignment
-.end-left-side {
+.float-to-left {
   margin-right: auto;
 }
 
-.begin-right-side {
+.float-to-right {
   margin-left: auto;
 }
 
@@ -319,6 +317,27 @@ export default {
   display: inline-block; // ensures items do not stack
   margin-left: 1 rem;
   margin-right: 1 rem;
+  color: $darktext;
+}
+
+// Title and subtitle
+.header--title {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.header--subtitle {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+// for email in footer
+.email-address {
+  text-decoration: none;
+  color: $lighttext !important;
 }
 
 .footer {
@@ -328,14 +347,6 @@ export default {
 
 .footer-font {
   color: $lighttext;
-}
-
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 // Format social media icons

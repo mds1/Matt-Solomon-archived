@@ -12,19 +12,19 @@
 
 // Define available categories
 export const categories = {
-  webdev: {
-    text: 'Web Development',
-    subcategories: {
-      design: 'Design',
-    },
-  },
   blockchain: {
     text: 'Blockchain & Decentralization',
     subcategories: {
       general: 'General',
       stablecoins: 'Stablecoins',
       storage: 'Storage',
-      consensus: 'Consensus Mechanisms',
+      // consensus: 'Consensus Mechanisms',
+    },
+  },
+  webdev: {
+    text: 'Web Development',
+    subcategories: {
+      design: 'Design',
     },
   },
   gnc: {
@@ -39,14 +39,12 @@ export const categories = {
       algorithms: 'Algorithms',
     },
   },
-  finance: {
-    text: 'Finance',
-    subcategories: {
-      temp: 'temp',
-    },
-  },
   misc: {
     text: 'Miscellaneous',
+    subcategories: {
+      // finance: 'Finance',
+      general: 'General',
+    },
   },
 };
 
@@ -198,7 +196,7 @@ const resourceList = [
     description: 'Efficient memorization using the spacing effect: literature review of widespread applicability, tips on use & what it’s good for',
     url: 'https://www.gwern.net/Spaced-repetition',
     category: categories.misc,
-    subcategory: undefined,
+    subcategory: categories.misc.subcategories.general,
     moreInfo: undefined,
     showIf: true,
   },
@@ -207,7 +205,7 @@ const resourceList = [
     description: 'Investigation of personal memory systems',
     url: 'http://augmentingcognition.com/ltm.html',
     category: categories.misc,
-    subcategory: undefined,
+    subcategory: categories.misc.subcategories.general,
     moreInfo: undefined,
     showIf: true,
   },
@@ -216,7 +214,7 @@ const resourceList = [
     description: 'Thirteen thoughts about how to achieve outlier success',
     url: 'http://blog.samaltman.com/how-to-be-successful',
     category: categories.misc,
-    subcategory: undefined,
+    subcategory: categories.misc.subcategories.general,
     moreInfo: undefined,
     showIf: true,
   },
@@ -225,7 +223,7 @@ const resourceList = [
     description: 'To be a successful creator you don’t need millions of dollars, fans, or customers',
     url: 'https://kk.org/thetechnium/1000-true-fans/',
     category: categories.misc,
-    subcategory: undefined,
+    subcategory: categories.misc.subcategories.general,
     moreInfo: undefined,
     showIf: true,
   },

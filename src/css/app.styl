@@ -4,9 +4,10 @@
 // =============================================================================
 //                                BACKGROUND
 // =============================================================================
-  // Background made with https://trianglify.io/, width="1920" height="2880"
+// Background made with https://trianglify.io/, width="1920" height="2880"
 .header {
-  background-image: url('../assets/background.svg');
+  // background-image: url('../assets/background.svg');
+  background: $background
 }
 
 .background-image {
@@ -41,13 +42,29 @@
   height: auto;
 }
 
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// =============================================================================
+//                                  LISTS
+// =============================================================================
+.list--list-item {
+  background: $background;
+  margin-bottom: 2%;
+}
+
 // =============================================================================
 //                                  FONTS
 // =============================================================================
 
 // Header style modeled after the overline option in Quasar's QItemLabel
 h1, h2, h3, .header--overline {
-  color: rgba(0,0,0,0.7);
+  color: $darktext
   font-weight: 500;
   letter-spacing: 0.16667em;
   line-height: 2rem;
@@ -55,7 +72,7 @@ h1, h2, h3, .header--overline {
 }
 
 h4, h5 {
-  color: rgba(0,0,0,0.7);
+  color: $darktext
   letter-spacing: 0.083333em;
   line-height: 2rem;
   text-transform: uppercase
@@ -63,19 +80,23 @@ h4, h5 {
 
 p, a, li, .p-font {
   line-height: 1.5rem;
-  color: rgba(0,0,0,0.7);
+  color: $darktext
   font-size: 1rem
 }
 
 .subheader--overline {
   font-weight: 400;
   line-height: 2rem;
-  color: rgba(0,0,0,0.7);
+  color: $darktext
   font-variant: all-small-caps
 }
 
 .no-text-decoration {
   text-decoration: none;
+}
+
+.text-dark {
+  color: $darktext
 }
 
 // Centered elements
