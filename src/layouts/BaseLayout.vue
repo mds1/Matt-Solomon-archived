@@ -6,11 +6,11 @@
     <!-- =================================================================== -->
     <!--                             HEADER                                  -->
     <!-- =================================================================== -->
-    <q-header class="header shadow-3">
+    <q-header class="header shadow-3 row">
       <q-toolbar class="all-content-format">
         <!-- 1: SITE LOGO -->
         <router-link
-          class="no-text-decoration"
+          class="no-text-decoration col-xs-3 col-sm-auto"
           to="/"
         >
           <img
@@ -23,11 +23,11 @@
 
         <!-- 2: SITE NAME/SUBTITLE -->
         <router-link
-          class="no-text-decoration float-to-left"
+          class="no-text-decoration float-to-left col-xs-8 col-sm-auto"
           to="/"
         >
           <q-toolbar-title class='header--title'>Matt Solomon
-            <div class='header--subtitle'>Blockchain and automation</div>
+            <div class='header--subtitle'>Blockchain & automation</div>
           </q-toolbar-title>
         </router-link>
 
@@ -46,11 +46,12 @@
         <q-btn
           @click="rightDrawerOpen = !rightDrawerOpen"
           aria-label="Menu"
-          class="float-to-right lt-sm menu-button"
-          outline
+          class="float-to-right lt-sm menu-button col-xs-2"
+          flat
+          dense
         >
-          <!-- <q-icon name="fas fa-bars"/> -->
-          Menu
+          <q-icon name="fas fa-bars" />
+          <!-- Menu -->
         </q-btn>
 
         <!-- 3B. MENU ITEMS (for large screens) -->
@@ -120,10 +121,11 @@
             <q-item
               :to="{ name: 'home' }"
               exact
-              separator
+              class="list--list-item shadow-4"
             >
-              <q-item-section>Home</q-item-section>
+              <q-item-section class='q-ma-lg'>Home</q-item-section>
             </q-item>
+            <br>
 
             <!-- ITEM: Blockchain -->
             <!-- <q-item
@@ -144,18 +146,90 @@
             <!-- ITEM: Blog -->
             <q-item
               :to="{ name: 'blog' }"
-              separator
+              class="list--list-item shadow-4"
             >
-              <q-item-section>Blog</q-item-section>
+              <q-item-section class='q-ma-lg'>Blog</q-item-section>
             </q-item>
+            <br>
 
             <!-- ITEM: Resources -->
             <q-item
               :to="{ name: 'resources' }"
-              separator
+              class="list--list-item shadow-4"
             >
-              <q-item-section>Resources</q-item-section>
+              <q-item-section class='q-ma-lg'>Resources</q-item-section>
             </q-item>
+            <br>
+
+            <!-- ITEM: Social Media -->
+            <q-item class="list--list-item shadow-4 row">
+              <q-item-section class='navbar-icons q-ma-lg'>
+                <div class="col-auto">
+                  <ul>
+                    <!-- LINKEDIN -->
+                    <a
+                      href="https://www.linkedin.com/in/msolomon4/"
+                      target="_blank"
+                    >
+                      <img
+                        alt="LinkedIn"
+                        src="../statics/logos/linkedin.svg"
+                        class='navbar-icon'
+                      >
+                    </a>
+                    <!-- GITHUB -->
+                    &nbsp;&nbsp;
+                    <a
+                      href="https://github.com/mds1"
+                      target="_blank"
+                    >
+                      <img
+                        alt="GitHub"
+                        src="../statics/logos/github.svg"
+                        class='navbar-icon'
+                      >
+                    </a>
+                    <!-- TWITTER -->
+                    &nbsp;&nbsp;
+                    <a
+                      href="https://twitter.com/msolomon44"
+                      target="_blank"
+                    >
+                      <img
+                        alt="Twitter"
+                        src="../statics/logos/twitter.svg"
+                        class='navbar-icon'
+                      >
+                    </a>
+                    <!-- MEDIUM -->
+                    &nbsp;&nbsp;
+                    <a
+                      href="https://medium.com/@msolomon44"
+                      target="_blank"
+                    >
+                      <img
+                        alt="Medium"
+                        src="../statics/logos/medium.svg"
+                        class='navbar-icon'
+                      >
+                    </a>
+                    <!-- REDDIT -->
+                    &nbsp;&nbsp;
+                    <a
+                      href="https://www.reddit.com/user/msolomon4"
+                      target="_blank"
+                    >
+                      <img
+                        alt="Reddit"
+                        src="../statics/logos/reddit.svg"
+                        class='navbar-icon'
+                      >
+                    </a>
+                  </ul>
+                </div>
+              </q-item-section>
+            </q-item>
+
           </q-list>
         </q-drawer>
       </q-toolbar>
@@ -206,6 +280,7 @@
                 alt="LinkedIn"
                 src="../statics/logos/linkedin.svg"
                 width="20rem"
+                class='footer-icon-invert'
               >
             </a>
             <!-- GITHUB -->
@@ -218,6 +293,7 @@
                 alt="GitHub"
                 src="../statics/logos/github.svg"
                 width="20rem"
+                class='footer-icon-invert'
               >
             </a>
             <!-- TWITTER -->
@@ -230,6 +306,7 @@
                 alt="Twitter"
                 src="../statics/logos/twitter.svg"
                 width="20rem"
+                class='footer-icon-invert'
               >
             </a>
             <!-- MEDIUM -->
@@ -242,6 +319,7 @@
                 alt="Medium"
                 src="../statics/logos/medium.svg"
                 width="20rem"
+                class='footer-icon-invert'
               >
             </a>
             <!-- REDDIT -->
@@ -254,6 +332,7 @@
                 alt="Reddit"
                 src="../statics/logos/reddit.svg"
                 width="20rem"
+                class='footer-icon-invert'
               >
             </a>
           </ul>
@@ -331,6 +410,21 @@ export default {
   font-weight: normal;
 }
 
+// Social media icon formatting ----------------
+.navbar-icons {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.navbar-icon {
+  width: 1.25rem;
+}
+
+.navbar-icons ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 // =============================================================================
 // FOOTER
 // =============================================================================
@@ -350,7 +444,7 @@ export default {
 }
 
 // Format social media icons
-ul img {
+.footer-icon-invert {
   // width: 1.5rem;
   // Invert SVG icons since we have a dark background
   // Source: https://stackoverflow.com/questions/13325798/invert-colors-of-an-image-in-css-or-javascript
@@ -358,7 +452,7 @@ ul img {
   filter: invert(1);
 }
 
-ul {
+footer ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
