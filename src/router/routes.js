@@ -30,6 +30,11 @@ const routes = [
         path: '/docker',
         component: () => import('pages/DockerPage.vue'),
       },
+      {
+        name: 'defi-stats',
+        path: '/defi-stats',
+        component: () => import('pages/DefiStatsPage.vue'),
+      },
     ],
   },
 ];

@@ -183,8 +183,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '~quasar-variables';
-
 .flex {
   flex-direction: column;
 }

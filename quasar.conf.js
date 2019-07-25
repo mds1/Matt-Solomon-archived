@@ -6,6 +6,8 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     boot: [
       'analytics',
+      'axios',
+      'plotly',
     ],
 
     css: [
@@ -42,6 +44,8 @@ module.exports = function (ctx) {
         'QCardSection',
         'QCardActions',
         'QImg',
+        'QInnerLoading',
+        'QSpinnerGears',
       ],
 
       directives: [
