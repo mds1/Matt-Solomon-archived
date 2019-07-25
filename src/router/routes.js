@@ -4,7 +4,14 @@ const routes = [
     path: '/',
     component: () => import('layouts/BaseLayout.vue'),
     children: [
-      { name: 'home', path: '', component: () => import('pages/HomePage.vue') },
+      {
+        name: 'home',
+        path: '',
+        component: () => import('pages/HomePage.vue'),
+        meta: {
+          title: 'Home - Matt Solomon',
+        },
+      },
       // {
       //   name: 'blockchain',
       //   path: '/blockchain',
@@ -19,21 +26,33 @@ const routes = [
         name: 'blog',
         path: '/blog',
         component: () => import('pages/BlogPage.vue'),
+        meta: {
+          title: 'Blog - Matt Solomon',
+        },
       },
       {
         name: 'resources',
         path: '/resources',
         component: () => import('pages/ResourcesPage.vue'),
+        meta: {
+          title: 'Resources - Matt Solomon',
+        },
       },
       {
         name: 'docker',
         path: '/docker',
         component: () => import('pages/DockerPage.vue'),
+        meta: {
+          title: 'Docker Installation - Matt Solomon',
+        },
       },
       {
-        name: 'defi-stats',
-        path: '/defi-stats',
-        component: () => import('pages/DefiStatsPage.vue'),
+        name: 'compound-rates',
+        path: '/compound-rates',
+        component: () => import('pages/CompoundRatesPage.vue'),
+        meta: {
+          title: 'Compound Rates - Matt Solomon',
+        },
       },
     ],
   },

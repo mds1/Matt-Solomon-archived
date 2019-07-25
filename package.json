@@ -9,8 +9,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
-    "dev": "source .env && npx firebase use testing && quasar dev",
-    "build": "source .env && quasar build && npx firebase use production && npx firebase deploy"
+    "dev": "npx firebase use testing && quasar dev",
+    "build": "quasar build && npx firebase use production && npx firebase deploy"
   },
   "dependencies": {
     "@quasar/extras": "^1.2.0",

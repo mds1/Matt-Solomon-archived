@@ -8,6 +8,7 @@ module.exports = function (ctx) {
       'analytics',
       'axios',
       'plotly',
+      'router',
     ],
 
     css: [
@@ -46,6 +47,9 @@ module.exports = function (ctx) {
         'QImg',
         'QInnerLoading',
         'QSpinnerGears',
+        'QOptionGroup',
+        'QRadio',
+        'QCheckbox',
       ],
 
       directives: [
