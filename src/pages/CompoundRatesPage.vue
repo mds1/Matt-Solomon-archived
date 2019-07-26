@@ -8,6 +8,7 @@
         <a
           class="text-h4"
           href="https://compound.finance"
+          target="_blank"
         >Compound</a>
       </h4>
     </div>
@@ -15,13 +16,21 @@
     <!-- LOADING ANIMATION -->
     <q-inner-loading :showing="!isDataLoaded">
       <q-spinner-gears
-        size="50px"
+        size="125px"
         color="primary"
       />
-      <p><strong>Loading data...</strong></p>
+      <h5><strong>Loading data...</strong></h5>
+      <p>
+        <em>
+          <strong>
+            This may take a minute. If it's too slow, try refreshing the page
+          </strong>
+        </em>
+      </p>
     </q-inner-loading>
 
     <!-- USER TOGGLES -->
+    <h5>Settings</h5>
     <div class="row justify-between">
       <!-- Start date toggle -->
       <div class="col-auto defi-toggles shadow-4 q-pa-lg q-pr-xl">
@@ -30,7 +39,7 @@
           v-model="userOptions.minBlockTimestamp.group"
           :options="userOptions.minBlockTimestamp.options"
           color="primary"
-          @input="generateFigure(true)"
+          @input="generateTimeSeriesFigure(true)"
         />
         <p class='helper-text'>Start dates are approximate</p>
       </div>
@@ -43,7 +52,7 @@
           :options="userOptions.rateTypes.options"
           color="primary"
           type="checkbox"
-          @input="generateFigure()"
+          @input="generateTimeSeriesFigure()"
         />
       </div>
 
@@ -53,43 +62,43 @@
         <!-- Not using option-group so we have more control over the layout -->
         <div class="row">
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[0].show"
             :label="userOptions.currencies[0].label"
           />
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[1].show"
             :label="userOptions.currencies[1].label"
           />
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[2].show"
             :label="userOptions.currencies[2].label"
           />
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[3].show"
             :label="userOptions.currencies[3].label"
           />
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[4].show"
             :label="userOptions.currencies[4].label"
           />
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[5].show"
             :label="userOptions.currencies[5].label"
           />
           <q-checkbox
-            @input="generateFigure()"
+            @input="generateTimeSeriesFigure()"
             class="col-xs-3"
             v-model="userOptions.currencies[6].show"
             :label="userOptions.currencies[6].label"
@@ -98,12 +107,25 @@
       </div>
     </div>
 
-    <!-- FIGURE -->
-    <br>
+    <!-- MAIN FIGURE -->
+    <h5>Figures</h5>
     <div
       class="shadow-4"
-      id="defi-rates-figure"
+      id="time-series-figure"
     />
+    <br>
+
+    <!-- OTHER FIGURES -->
+    <div class="row justify-between">
+      <div
+        class="col shadow-4 q-mr-sm"
+        id="average-rates-figure"
+      />
+      <div
+        class="col shadow-4 q-ml-sm"
+        id="box-plot"
+      />
+    </div>
     <br>
 
   </q-page>
@@ -112,16 +134,16 @@
 <script>
 import axios from 'axios';
 import isEmpty from 'lodash/isEmpty'; // https://lodash.com/docs/4.17.15#isEmpty
+import mean from 'lodash/mean'; // https://lodash.com/docs/4.17.15#mean
 import figureMixin from 'src/mixins/figureMixin.js';
 
 
 export default {
-  name: 'DefiStatsPage',
+  name: 'CompoundRatesPage',
 
   computed: {
-    // Parameters for the Compound API call
+    // Determine what timestamp to start at
     compoundMinBlockTimestamp() {
-      // Determine what timestamp to start at
       switch (this.userOptions.minBlockTimestamp.group) {
         case 'v2Launch':
           return this.compoundOptions.timestampDataV2;
@@ -135,34 +157,26 @@ export default {
 
   data() {
     return {
-      // Compound data returned form the API
+      // Compound data returned form the API, each item in the array has the rates for a currency
       compoundData: [],
+
+      // Plotted data, also an array
+      plottedData: [],
+
+      // True once compoundData has been populated
+      isDataLoaded: false,
 
       // Options for the Compound data
       compoundOptions: {
         timestampDataStart: '1556496000', // approximate beginning of Compound's API data
         timestampDataV2: '1558612800', // approximate launch of Compound v2
+        maxBlockTimestamp: String(Math.round((new Date()).getTime() / 1000)), // current timestamp
+        numBuckets: '150', // API call seems to become unreliable as this number increases
       },
 
-      compoundParams: {
-        asset: this.$store.state.defi.assetMap.cDAI,
-        maxBlockTimestamp: String(Math.round((new Date()).getTime() / 1000)), // cuurent timestamp
-        numBuckets: '100',
-        // Map of asset names to contract addresses, from https://compound.finance/developers
-        assetMap: {
-          cBAT: '0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e',
-          cDAI: '0xf5dce57282a584d2746faf1593d3121fcac444dc',
-          cETH: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
-          cREP: '0x158079ee67fce2f58472a96584a73c7ab9ac95c1',
-          cUSDC: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
-          cWBTC: '0xc11b1268c1a384e55c48c2391d8d480264a3a7f4',
-          cZRX: '0xb3319f5d18bc0d84dd1b4825dcde5d5f7266d407',
-        },
-      },
-
-      isDataLoaded: false,
-      // User toggles
+      // User toggles for plot
       userOptions: {
+
         // Toggle for start date
         minBlockTimestamp: {
           group: 'v2Launch',
@@ -171,16 +185,18 @@ export default {
             { label: 'Compund API Start', value: 'apiStart' },
           ],
         },
+
         // Toggle for currencies to show
         currencies: [
           { label: 'BAT', show: false, address: '0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e' },
           { label: 'DAI', show: true, address: '0xf5dce57282a584d2746faf1593d3121fcac444dc' },
           { label: 'ETH', show: false, address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5' },
           { label: 'REP', show: false, address: '0x158079ee67fce2f58472a96584a73c7ab9ac95c1' },
-          { label: 'USDC', show: false, address: '0x39aa39c021dfbae8fac545936693ac917d5e7563' },
+          { label: 'USDC', show: true, address: '0x39aa39c021dfbae8fac545936693ac917d5e7563' },
           { label: 'WBTC', show: false, address: '0xc11b1268c1a384e55c48c2391d8d480264a3a7f4' },
           { label: 'ZRX', show: false, address: '0xb3319f5d18bc0d84dd1b4825dcde5d5f7266d407' },
         ],
+
         // Rate types to show
         rateTypes: {
           group: ['supply', 'borrow'],
@@ -196,11 +212,14 @@ export default {
   mixins: [figureMixin],
 
   mounted() {
-    this.generateFigure();
+    this.generateTimeSeriesFigure();
   },
 
   methods: {
-    isEmpty, // lodash method
+    // lodash methods
+    isEmpty,
+    mean,
+
 
     /**
      * Fetch data from Compound's API for all assets
@@ -219,8 +238,8 @@ export default {
             params: {
               asset: String(currency.address),
               min_block_timestamp: String(this.compoundMinBlockTimestamp),
-              max_block_timestamp: String(this.compoundParams.maxBlockTimestamp),
-              num_buckets: String(this.compoundParams.numBuckets),
+              max_block_timestamp: String(this.compoundOptions.maxBlockTimestamp),
+              num_buckets: String(this.compoundOptions.numBuckets),
             },
           }),
         );
@@ -232,11 +251,12 @@ export default {
       this.isDataLoaded = true;
     },
 
+
     /**
      * Use Compound API response to generate plots
      * @param {Boolean} fetchData If true, data is re-fetched instead of using cached data
      */
-    async generateFigure(fetchData = false) {
+    async generateTimeSeriesFigure(fetchData = false) {
       // Call API if data isn't cached -------------------------------------------------------------
       if (isEmpty(this.compoundData) || fetchData) {
         await this.getCompoundData();
@@ -247,14 +267,16 @@ export default {
       let plotColorCount = 0;
       const supplyTraces = [];
       const borrowTraces = [];
+      const currencyNames = [];
 
       for (let i = 0; i < numberOfCurrencies; i += 1) {
+        // Only plot checked items
         if (!this.userOptions.currencies[i].show) {
-          // Only plot checked items
           // eslint-disable-next-line no-continue
           continue;
         }
 
+        // Get rates, dates, and generate legend labels
         const supplyData = this.compoundData[i].data.supply_rates;
         const borrowData = this.compoundData[i].data.borrow_rates;
 
@@ -279,7 +301,9 @@ export default {
               color: this.colorArray[plotColorCount],
             },
           });
-        }
+
+          currencyNames.push(currencyName);
+        } // end if supply
 
         // Add data for borrow trace
         if (this.userOptions.rateTypes.group.includes('borrow')) {
@@ -292,14 +316,16 @@ export default {
               color: this.colorArray[plotColorCount],
             },
             line: {
-              dash: 'dot',
+              // Show dashed line if we are also plotting supply
+              dash: this.userOptions.rateTypes.group.includes('supply') ? 'dot' : 'solid',
             },
           });
-        }
 
-        plotColorCount += 1;
-      }
+          currencyNames.push(currencyName);
+        } // end if borrow
 
+        plotColorCount += 1; // move to the next plot color
+      } // end for each currency
 
       const layout = {
         title: 'Compund Interest Rates',
@@ -310,27 +336,199 @@ export default {
           title: 'Rate',
           ticksuffix: '%',
         },
-        legend: {
-          // x: 0.1,
-          // y: 1,
-        },
       };
 
       // Generate plot -----------------------------------------------------------------------------
       this.isDataLoaded = true;
-      // Alternate suply and borrow arrays such that all lines for an asset are paired
       const data = [];
-      for (let i = 0; i < supplyTraces.length; i += 1) {
-        data.push(supplyTraces[i], borrowTraces[i]);
+      const plottedData = [];
+
+
+      if (
+        this.userOptions.rateTypes.group.includes('supply')
+        && this.userOptions.rateTypes.group.includes('borrow')
+      ) {
+        // If user rquests supply and borrow, add both to our stored data
+        // Alternate suply and borrow arrays such that all lines for an asset are paired
+        for (let i = 0; i < supplyTraces.length; i += 1) {
+          data.push(supplyTraces[i], borrowTraces[i]);
+          plottedData.push(
+            { data: supplyTraces[i], name: currencyNames[i] },
+            { data: borrowTraces[i], name: currencyNames[i] },
+          );
+        }
+      } else if (this.userOptions.rateTypes.group.includes('supply')) {
+        // If user only requested supply
+        for (let i = 0; i < supplyTraces.length; i += 1) {
+          data.push(supplyTraces[i]);
+          plottedData.push(
+            { data: supplyTraces[i], name: currencyNames[i] },
+          );
+        }
+      } else if (this.userOptions.rateTypes.group.includes('borrow')) {
+        // If user only requested borrow
+        for (let i = 0; i < borrowTraces.length; i += 1) {
+          data.push(borrowTraces[i]);
+          plottedData.push(
+            { data: borrowTraces[i], name: currencyNames[i] },
+          );
+        }
       }
+
+      this.plottedData = data;
       const { finalData, finalLayout } = this.prepareLinePlot(data, layout);
-      this.$Plotly.newPlot('defi-rates-figure', finalData, finalLayout, { responsive: true });
+      this.$Plotly.newPlot('time-series-figure', finalData, finalLayout, { responsive: true });
+
+      // Generate other plots
+      this.generateAverageRatePlot();
+      this.generateBoxPlot();
+    },
+
+    /**
+     * Compute and plots averate rates for selected assets
+     */
+    generateAverageRatePlot() {
+      // Define arrays to hold data
+      const currencyNames = [];
+      const supplyRates = [];
+      const borrowRates = [];
+
+      for (let i = 0; i < this.plottedData.length; i += 1) {
+        // Get rates
+        const data = this.plottedData[i];
+        const rates = data.y;
+        const averageRate = mean(rates);
+
+        // Get name data
+        const nameComponents = data.name.split(' ');
+        const currencyName = nameComponents[0];
+        const rateType = nameComponents[1].toLowerCase();
+
+        // Update arrays
+        if (!currencyNames.includes(currencyName)) {
+          currencyNames.push(currencyName);
+        }
+        if (rateType === 'supply') {
+          supplyRates.push(averageRate);
+        } else {
+          borrowRates.push(averageRate);
+        }
+      } // end for each set of plotted data
+
+      // Generate plots
+      const data = [];
+      if (this.userOptions.rateTypes.group.includes('supply')) {
+        data.push({
+          x: currencyNames,
+          y: supplyRates,
+          name: 'Supply',
+          type: 'bar',
+        });
+      }
+      if (this.userOptions.rateTypes.group.includes('borrow')) {
+        data.push({
+          x: currencyNames,
+          y: borrowRates,
+          name: 'Borrow',
+          type: 'bar',
+        });
+      }
+
+      const layout = {
+        barmode: 'group',
+        title: 'Average Interest Rates',
+        xaxis: {
+          title: 'Currency',
+        },
+        yaxis: {
+          title: 'Rate',
+          ticksuffix: '%',
+        },
+      };
+
+      this.$Plotly.newPlot('average-rates-figure', data, layout, { responsive: true });
+    },
+
+    /**
+     * Generates box plots of selected assets
+     */
+    generateBoxPlot() {
+      const traces = [];
+      const supplyX = [];
+      const supplyY = [];
+      const borrowX = [];
+      const borrowY = [];
+      for (let i = 0; i < this.plottedData.length; i += 1) {
+        // Get rates
+        const data = this.plottedData[i];
+        const rates = data.y;
+
+        // Get name data
+        const nameComponents = data.name.split(' ');
+        const currencyName = nameComponents[0];
+        const rateType = nameComponents[1].toLowerCase();
+
+        if (rateType === 'supply') {
+          rates.forEach(() => supplyX.push(currencyName));
+          rates.forEach(rate => supplyY.push(rate));
+        } else {
+          rates.forEach(() => borrowX.push(currencyName));
+          rates.forEach(rate => borrowY.push(rate));
+        }
+      } // end for each set of plotted data
+
+      if (this.userOptions.rateTypes.group.includes('supply')) {
+        traces.push({
+          x: supplyX,
+          y: supplyY,
+          name: 'Supply',
+          type: 'box',
+          boxpoints: 'all',
+          jitter: 0.3,
+          pointpos: -1.5,
+          marker: {
+            size: 2,
+          },
+        });
+      }
+      if (this.userOptions.rateTypes.group.includes('borrow')) {
+        traces.push({
+          x: borrowX,
+          y: borrowY,
+          name: 'Borrow',
+          type: 'box',
+          boxpoints: 'all',
+          jitter: 0.3,
+          pointpos: -1.5,
+          marker: {
+            size: 2,
+          },
+        });
+      }
+
+      const layout = {
+        title: 'Interest Rate Distribution',
+        xaxis: {
+          title: 'Currency',
+        },
+        yaxis: {
+          title: 'Rate',
+          ticksuffix: '%',
+        },
+        boxmode: 'group',
+      };
+
+      this.$Plotly.newPlot('box-plot', traces, layout, { responsive: true });
     },
   },
 };
 </script>
 
 <style>
+h5 {
+  margin-bottom: 0;
+}
+
 .defi-toggles {
   background-color: #fff;
 }
