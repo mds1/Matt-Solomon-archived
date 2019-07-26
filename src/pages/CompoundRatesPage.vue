@@ -13,35 +13,80 @@
       </h4>
     </div>
 
-    <!-- LOADING ANIMATION -->
-    <q-inner-loading :showing="!isDataLoaded">
-      <q-spinner-gears
-        size="125px"
-        color="primary"
-      />
-      <h5><strong>Loading data...</strong></h5>
-      <p>
-        <em>
-          <strong>
-            This may take a minute. If it's too slow, try refreshing the page
-          </strong>
-        </em>
-      </p>
-    </q-inner-loading>
-
     <!-- USER TOGGLES -->
     <h5>Settings</h5>
     <div class="row justify-between">
-      <!-- Start date toggle -->
-      <div class="col-auto defi-toggles shadow-4 q-pa-lg q-pr-xl">
-        <p><strong>Start Date</strong></p>
-        <q-option-group
-          v-model="userOptions.minBlockTimestamp.group"
-          :options="userOptions.minBlockTimestamp.options"
+      <!-- Dates -->
+      <div class="col-auto defi-toggles shadow-4 q-pa-lg">
+        <p><strong>Start & End Dates</strong></p>
+
+        <!-- Start Date -->
+        <q-input
+          dense
+          hide-bottom-space
+          filled
+          v-model="userOptions.dates.startDate"
+          mask="date"
+          :rules="['date']"
+          placeholder="Start Date"
+          class="q-mb-sm"
+          style="max-width: 175px"
+        >
+          <template v-slot:append>
+            <q-icon
+              name="event"
+              class="cursor-pointer"
+            >
+              <q-popup-proxy
+                ref="qDateProxy"
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date
+                  v-model="userOptions.dates.startDate"
+                  @input="() => $refs.qDateProxy.hide()"
+                />
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+
+        <!-- End Date -->
+        <q-input
+          dense
+          hide-bottom-space
+          filled
+          v-model="userOptions.dates.endDate"
+          mask="date"
+          :rules="['date']"
+          placeholder="End Date"
+          class="q-mb-sm"
+          style="max-width: 175px"
+        >
+          <template v-slot:append>
+            <q-icon
+              name="event"
+              class="cursor-pointer"
+            >
+              <q-popup-proxy
+                ref="qDateProxy"
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date
+                  v-model="userOptions.dates.endDate"
+                  @input="() => $refs.qDateProxy.hide()"
+                />
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+        <q-btn
           color="primary"
-          @input="generateTimeSeriesFigure(true)"
+          label="Apply"
+          @click="generateTimeSeriesFigure(true)"
         />
-        <p class='helper-text'>Start dates are approximate</p>
+
       </div>
 
       <!-- Rate types toggle -->
@@ -107,15 +152,33 @@
       </div>
     </div>
 
-    <!-- MAIN FIGURE -->
+    <!-- FIGURES SECTION -->
     <h5>Figures</h5>
+
+    <!-- LOADING ANIMATION -->
+    <div v-if="!isDataLoaded">
+      <div class="horizontal-center text-center">
+        <q-spinner-gears
+          size="125px"
+          color="primary"
+        />
+        <h6><strong>Fetching data...</strong></h6>
+        <p>
+          <em>
+            <strong>
+              This may take a minute. If it's not loading, try refreshing the page.
+            </strong>
+          </em>
+        </p>
+      </div>
+    </div>
+
+    <!-- FIGURES -->
     <div
-      class="shadow-4"
+      class="shadow-4 q-mb-md"
       id="time-series-figure"
     />
-    <br>
 
-    <!-- OTHER FIGURES -->
     <div class="row justify-between">
       <div
         class="col shadow-4 q-mr-sm"
@@ -132,6 +195,7 @@
 </template>
 
 <script>
+import { date } from 'quasar';
 import axios from 'axios';
 import isEmpty from 'lodash/isEmpty'; // https://lodash.com/docs/4.17.15#isEmpty
 import mean from 'lodash/mean'; // https://lodash.com/docs/4.17.15#mean
@@ -142,16 +206,26 @@ export default {
   name: 'CompoundRatesPage',
 
   computed: {
-    // Determine what timestamp to start at
+    // Determine what timestamp to start and end at. Take the YYYY/MM/DD input by the user and
+    // convert them to a Unix timestamp
     compoundMinBlockTimestamp() {
-      switch (this.userOptions.minBlockTimestamp.group) {
-        case 'v2Launch':
-          return this.compoundOptions.timestampDataV2;
-        case 'apiStart':
-          return this.compoundOptions.timestampDataStart;
-        default:
-          return this.compoundOptions.timestampDataV2;
-      }
+      const startDate = this.userOptions.dates.startDate.split('/');
+      const startDateObject = date.buildDate({
+        year: startDate[0], month: startDate[1], date: startDate[2],
+      });
+
+      const timestamp = date.formatDate(startDateObject, 'X');
+      return String(timestamp);
+    },
+
+    compoundMaxBlockTimestamp() {
+      const endDate = this.userOptions.dates.endDate.split('/');
+      const endDateObject = date.buildDate({
+        year: endDate[0], month: endDate[1], date: endDate[2],
+      });
+
+      const timestamp = date.formatDate(endDateObject, 'X');
+      return String(timestamp);
     },
   },
 
@@ -168,23 +242,27 @@ export default {
 
       // Options for the Compound data
       compoundOptions: {
-        timestampDataStart: '1556496000', // approximate beginning of Compound's API data
-        timestampDataV2: '1558612800', // approximate launch of Compound v2
-        maxBlockTimestamp: String(Math.round((new Date()).getTime() / 1000)), // current timestamp
-        numBuckets: '150', // API call seems to become unreliable as this number increases
+        // timestampDataStart: '1556496000', // approximate beginning of Compound's API data
+        // timestampDataV2: '1558612800', // approximate launch of Compound v2
+        // maxBlockTimestamp: String(Math.round((new Date()).getTime() / 1000)), // current timestam
+        numBuckets: '100', // API call seems to become unreliable as this number increases
       },
 
       // User toggles for plot
       userOptions: {
+        dates: {
+          startDate: '2019/05/23',
+          endDate: date.formatDate(Date.now(), 'YYYY/MM/DD'),
+        },
 
         // Toggle for start date
-        minBlockTimestamp: {
-          group: 'v2Launch',
-          options: [
-            { label: 'Compound v2 Launch', value: 'v2Launch' },
-            { label: 'Compund API Start', value: 'apiStart' },
-          ],
-        },
+        // minBlockTimestamp: {
+        //   group: 'v2Launch',
+        //   options: [
+        //     { label: 'Compound v2 Launch', value: 'v2Launch' },
+        //     { label: 'Compund API Start', value: 'apiStart' },
+        //   ],
+        // },
 
         // Toggle for currencies to show
         currencies: [
@@ -238,7 +316,7 @@ export default {
             params: {
               asset: String(currency.address),
               min_block_timestamp: String(this.compoundMinBlockTimestamp),
-              max_block_timestamp: String(this.compoundOptions.maxBlockTimestamp),
+              max_block_timestamp: String(this.compoundMaxBlockTimestamp),
               num_buckets: String(this.compoundOptions.numBuckets),
             },
           }),

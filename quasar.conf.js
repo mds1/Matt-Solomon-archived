@@ -50,6 +50,9 @@ module.exports = function (ctx) {
         'QOptionGroup',
         'QRadio',
         'QCheckbox',
+        'QDate',
+        'QPopupProxy',
+        'QInput',
       ],
 
       directives: [
