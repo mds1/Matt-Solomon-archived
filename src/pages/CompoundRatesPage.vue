@@ -260,7 +260,7 @@ export default {
         //   group: 'v2Launch',
         //   options: [
         //     { label: 'Compound v2 Launch', value: 'v2Launch' },
-        //     { label: 'Compund API Start', value: 'apiStart' },
+        //     { label: 'Compound API Start', value: 'apiStart' },
         //   ],
         // },
 
@@ -406,7 +406,7 @@ export default {
       } // end for each currency
 
       const layout = {
-        title: 'Compund Interest Rates',
+        title: 'Compound Interest Rates',
         xaxis: {
           title: 'Date',
         },
