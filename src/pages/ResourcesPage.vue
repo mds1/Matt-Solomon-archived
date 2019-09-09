@@ -3,7 +3,7 @@
     <!-- content -->
     <h2 class="center-text">Resources</h2>
     <p class="center-text">
-      <i>This page is frequently updated...</i>
+      <i>This page is not updated as frequently as I planned to...</i>
     </p>
 
     <!-- BEGIN RESOURCE LIST -->
@@ -14,7 +14,7 @@
       v-for="category in categories"
       class="row"
     >
-      <div class="list--list-item shadow-4 col-12">
+      <div class="list--list-item shadow-10 col-12">
         <div class="q-ma-lg">
           <!-- Display Category -->
           <h4><b>{{category.text}}</b></h4>

@@ -53,6 +53,7 @@ module.exports = function (ctx) {
         'QDate',
         'QPopupProxy',
         'QInput',
+        'QBadge',
       ],
 
       directives: [

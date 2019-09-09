@@ -3,7 +3,7 @@
     <q-list>
       <!-- BLOCKCHAIN -->
       <br>
-      <div class="list--list-item shadow-4">
+      <div class="list--list-item shadow-10">
         <q-item class="row-6">
           <q-item-section class='q-ma-lg'>
             <!-- BLOCKCHAIN ROUTER LINK -->
@@ -15,12 +15,35 @@
             <!-- </router-link> -->
             <!-- BLOCKCHAIN DESCRIPTION -->
             <q-item-label class="p-font">
+              Currently building
+              <a
+                class="hyperlink"
+                href="https://demo.floatify.net"
+                target="_blank"
+              >Floatify</a>
+              to enable anyone to easily access decentralized financial protocols. The current
+              version will allow anyone with a US bank account to take advantage of the
+              <router-link
+                class="hyperlink"
+                :to="{name: 'compound-rates'}"
+              >
+                high interest rates
+              </router-link>
+              offered by <a
+                class="hyperlink"
+                href="https://compound.finance"
+                target="_blank"
+              >Compound</a>.
+              <!--  -->
+              <br><br>
+              <!--  -->
               Graduate of the 2018
               <a
+                class="hyperlink"
                 href="https://consensys.net/academy/bootcamp/"
                 target="_blank"
               >ConsenSys Academy Developer Program</a>,
-              with about a year of experience in Ethereum development, including:
+              with about a year and a half of experience in Ethereum development, including:
               <ul>
                 <li>Smart contract development, testing, and deployment</li>
                 <li>Creating web-based front ends to interact with smart contracts</li>
@@ -49,7 +72,7 @@
 
       <!-- NAVIGATION -->
       <br>
-      <div class="list--list-item shadow-4">
+      <div class="list--list-item shadow-10">
         <q-item class="row-6">
           <q-item-section class='q-ma-lg'>
             <!-- AUTOMATION ROUTER LINK -->
@@ -65,11 +88,13 @@
               (GN&C), including:
               <ul>
                 <li>
-                  Development of <a
+                  Development of
+                  <a
+                    class="hyperlink"
                     target="_blank"
                     href="https://github.com/mds1/path-planning"
-                  >Hierarchical D* Lite</a>, a real-time path-planning algorithm
-                  for UAVs in unknown environments
+                  >Hierarchical D* Lite</a>,
+                  a real-time path-planning algorithm for UAVs in unknown environments
                 </li>
                 <li>Analysis and development of Kalman Filters for spacecraft</li>
                 <li>
@@ -89,7 +114,7 @@
 
       <!-- AUTOMATION -->
       <br>
-      <div class="list--list-item shadow-4">
+      <div class="list--list-item shadow-10">
         <q-item class="row-6">
           <q-item-section class='q-ma-lg'>
             <!-- AUTOMATION ROUTER LINK -->
@@ -110,7 +135,7 @@
                 </li>
                 <li>Web scraping and crawling</li>
                 <li>Wrapping automation tools in Docker containers for improved portability</li>
-                <li>Scheduling recurring tasks using Amazon Web Services (AWS)</li>
+                <li>Scheduling recurring tasks using cloud providers</li>
               </ul>
             </q-item-label>
           </q-item-section>
@@ -123,7 +148,7 @@
 
       <!-- BLOG -->
       <br>
-      <div class="list--list-item shadow-4">
+      <div class="list--list-item shadow-10">
         <q-item class="row-6">
           <q-item-section class='q-ma-lg'>
             <!-- BLOG ROUTER LINK -->
@@ -148,7 +173,7 @@
 
       <!-- RESOURCES -->
       <br>
-      <div class="list--list-item shadow-4">
+      <div class="list--list-item shadow-10">
         <q-item class="row-6">
           <q-item-section class='q-ma-lg'>
             <!-- RESOURCES ROUTER LINK -->
@@ -194,6 +219,11 @@ export default {
 .q-item__section--main a {
   text-decoration: none;
   // color: $darktext;
+}
+
+.hyperlink {
+  text-decoration: underline !important;
+  color: $accent;
 }
 
 .list--list-item {

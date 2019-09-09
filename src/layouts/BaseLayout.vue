@@ -101,6 +101,15 @@
           >
             <a>Resources</a>
           </router-link>
+
+          <!-- CONTACT -->
+          <router-link
+            :to="{ name: 'contact' }"
+            active-class="active-page"
+            class="no-text-decoration nav"
+          >
+            <a>Contact</a>
+          </router-link>
         </ul>
 
         <!-- BEGIN MENU ITEM LIST FOR 3A -->
@@ -121,7 +130,7 @@
             <q-item
               :to="{ name: 'home' }"
               exact
-              class="list--list-item shadow-4"
+              class="list--list-item shadow-10"
             >
               <q-item-section class='q-ma-lg'>Home</q-item-section>
             </q-item>
@@ -146,7 +155,7 @@
             <!-- ITEM: Blog -->
             <q-item
               :to="{ name: 'blog' }"
-              class="list--list-item shadow-4"
+              class="list--list-item shadow-10"
             >
               <q-item-section class='q-ma-lg'>Blog</q-item-section>
             </q-item>
@@ -155,14 +164,23 @@
             <!-- ITEM: Resources -->
             <q-item
               :to="{ name: 'resources' }"
-              class="list--list-item shadow-4"
+              class="list--list-item shadow-10"
             >
               <q-item-section class='q-ma-lg'>Resources</q-item-section>
             </q-item>
             <br>
 
+            <!-- ITEM: Contact -->
+            <q-item
+              :to="{ name: 'contact' }"
+              class="list--list-item shadow-10"
+            >
+              <q-item-section class='q-ma-lg'>Contact</q-item-section>
+            </q-item>
+            <br>
+
             <!-- ITEM: Social Media -->
-            <q-item class="list--list-item shadow-4 row">
+            <q-item class="list--list-item shadow-10 row">
               <q-item-section class='navbar-icons q-ma-lg'>
                 <div class="col-auto">
                   <ul>

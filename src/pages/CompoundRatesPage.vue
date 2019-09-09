@@ -17,7 +17,7 @@
     <h5>Settings</h5>
     <div class="row justify-between">
       <!-- Dates -->
-      <div class="col-auto defi-toggles shadow-4 q-pa-lg">
+      <div class="col-auto defi-toggles shadow-10 q-pa-lg">
         <p><strong>Start & End Dates</strong></p>
 
         <!-- Start Date -->
@@ -90,7 +90,7 @@
       </div>
 
       <!-- Rate types toggle -->
-      <div class="col-auto defi-toggles shadow-4 q-pa-lg q-pr-xl">
+      <div class="col-auto defi-toggles shadow-10 q-pa-lg q-pr-xl">
         <p><strong>Rate Types</strong></p>
         <q-option-group
           v-model="userOptions.rateTypes.group"
@@ -102,7 +102,7 @@
       </div>
 
       <!-- Currencies toggle -->
-      <div class="col-auto defi-toggles shadow-4 q-pa-lg q-pr-sm">
+      <div class="col-auto defi-toggles shadow-10 q-pa-lg q-pr-sm">
         <p><strong>Currencies</strong></p>
         <!-- Not using option-group so we have more control over the layout -->
         <div class="row">
@@ -175,17 +175,17 @@
 
     <!-- FIGURES -->
     <div
-      class="shadow-4 q-mb-md"
+      class="shadow-10 q-mb-md"
       id="time-series-figure"
     />
 
     <div class="row justify-between">
       <div
-        class="col shadow-4 q-mr-sm"
+        class="col shadow-10 q-mr-sm"
         id="average-rates-figure"
       />
       <div
-        class="col shadow-4 q-ml-sm"
+        class="col shadow-10 q-ml-sm"
         id="box-plot"
       />
     </div>
@@ -251,7 +251,7 @@ export default {
       // User toggles for plot
       userOptions: {
         dates: {
-          startDate: '2019/05/23',
+          startDate: '2019/04/01',
           endDate: date.formatDate(Date.now(), 'YYYY/MM/DD'),
         },
 

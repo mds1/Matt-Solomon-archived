@@ -47,6 +47,14 @@ const routes = [
         },
       },
       {
+        name: 'contact',
+        path: '/contact',
+        component: () => import('pages/Contact.vue'),
+        meta: {
+          title: 'Contact - Matt Solomon',
+        },
+      },
+      {
         name: 'compound-rates',
         path: '/compound-rates',
         component: () => import('pages/CompoundRatesPage.vue'),
