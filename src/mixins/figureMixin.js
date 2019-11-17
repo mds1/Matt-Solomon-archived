@@ -58,6 +58,7 @@ export default {
           automargin: true,
           gridcolor: '00000044',
           gridwidth: 1,
+          hoverformat: '.2f',
         },
         // configure plot margins
         margin: {

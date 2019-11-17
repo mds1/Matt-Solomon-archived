@@ -162,13 +162,9 @@
           size="125px"
           color="primary"
         />
-        <h6><strong>Fetching data...</strong></h6>
-        <p>
-          <em>
-            <strong>
-              This may take a minute. If it's not loading, try refreshing the page.
-            </strong>
-          </em>
+        <h6>Fetching data...</h6>
+        <p class='text-italic'>
+          This may take a minute. If it's not loading, try refreshing the page.
         </p>
       </div>
     </div>
@@ -521,6 +517,7 @@ export default {
         yaxis: {
           title: 'Rate',
           ticksuffix: '%',
+          hoverformat: '.2f',
         },
       };
 
@@ -592,6 +589,7 @@ export default {
         yaxis: {
           title: 'Rate',
           ticksuffix: '%',
+          hoverformat: '.2f',
         },
         boxmode: 'group',
       };
