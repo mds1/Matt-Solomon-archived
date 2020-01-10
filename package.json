@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "npx firebase use testing && quasar dev",
-    "build": "quasar build && npx firebase use production && npx firebase deploy"
+    "build": "git push && quasar build && npx firebase use production && npx firebase deploy"
   },
   "dependencies": {
     "@quasar/extras": "^1.2.0",

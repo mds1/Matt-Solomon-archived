@@ -14,7 +14,7 @@
           to="/"
         >
           <img
-            src="statics/favicons/main-404x404.jpeg"
+            src="statics/favicons/main-512x512.png"
             height="60 rem"
             class="q-ma-md"
             style="border-radius: 50%;"
