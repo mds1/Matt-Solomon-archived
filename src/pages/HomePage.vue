@@ -18,7 +18,7 @@
               Currently building
               <a
                 class="hyperlink"
-                href="https://demo.floatify.net"
+                href="https://floatify.net"
                 target="_blank"
               >Floatify</a>
               to enable anyone to easily access decentralized financial protocols. The current
