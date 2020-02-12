@@ -105,7 +105,10 @@
       <div class="col-auto defi-toggles shadow-10 q-pa-lg q-pr-sm">
         <p><strong>Currencies</strong></p>
         <!-- Not using option-group so we have more control over the layout -->
-        <div class="row" style="max-width: 475px;">
+        <div
+          class="row"
+          style="max-width: 475px;"
+        >
           <q-checkbox
             @input="generateTimeSeriesFigure()"
             class="col-xs-3"
@@ -181,7 +184,7 @@
       id="time-series-figure"
     />
 
-    <div class="row justify-between">
+    <div class="row justify-between q-mb-md">
       <div
         class="col shadow-10 q-mr-sm"
         id="average-rates-figure"
@@ -191,6 +194,12 @@
         id="box-plot"
       />
     </div>
+
+    <div
+      class="shadow-10 q-mb-md"
+      id="growth-of-investment"
+    />
+
     <br>
 
   </q-page>
@@ -300,7 +309,6 @@ export default {
     // lodash methods
     isEmpty,
     mean,
-
 
     /**
      * Fetch data from Compound's API for all assets
@@ -463,6 +471,56 @@ export default {
       // Generate other plots
       this.generateAverageRatePlot();
       this.generateBoxPlot();
+      this.generateGrowthOfInvestmentPlot(supplyTraces);
+    },
+
+    /**
+     * Generate growth of investment plot
+     */
+    generateGrowthOfInvestmentPlot(supplyTraces) {
+      console.log('supply traces: ', supplyTraces);
+      const traces = [];
+      for (let j = 0; j < supplyTraces.length; j += 1) {
+        const data = supplyTraces[j];
+        const timestamps = data.x;
+        const rates = data.y;
+        const initialValue = 10000;
+        const values = [initialValue];
+        for (let i = 0; i < timestamps.length - 1; i += 1) {
+          // In above loop, we use length-1 to ignore the current rate
+          const deltaT = (timestamps[i + 1].getTime() - timestamps[i].getTime()) / 1000; // in sec
+          console.log('deltaT: ', deltaT);
+          const presentValue = values[values.length - 1];
+          const rate = rates[i] / 100 / 365 / 24 / 3600; // per-second interest rate
+          const n = 1; // Math.floor(deltaT / 15); // number of times interest applied per period
+          const t = deltaT; // number of time periods elapsed
+          console.log(presentValue, rate, n, t);
+          const newValue = presentValue * ((1 + rate / n) ** (n * t));
+          values.push(newValue);
+        }
+        console.log('values: ', values);
+
+        traces.push({
+          x: timestamps,
+          y: values,
+          type: 'scatter',
+          mode: 'lines',
+          name: supplyTraces[j].name.split(' ')[0], // e.g. DAI Supply Rate -> Dai
+        });
+      }
+
+      const layout = {
+        title: 'Growth of $10,000',
+        xaxis: {
+          title: 'Date',
+        },
+        yaxis: {
+          title: 'Value',
+          tickprefix: '$',
+        },
+      };
+      const { finalData, finalLayout } = this.prepareLinePlot(traces, layout);
+      this.$Plotly.newPlot('growth-of-investment', finalData, finalLayout, { responsive: true });
     },
 
     /**
