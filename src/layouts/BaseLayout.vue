@@ -85,22 +85,27 @@
           </router-link> -->
 
           <!-- BLOG -->
-          <router-link
-            :to="{ name: 'blog' }"
+          <!-- <router-link
+            :to="'https://medium.com/@msolomon44'"
+
+          >
+            <a>Articles</a>
+          </router-link> -->
+          <a
             active-class="active-page"
             class="no-text-decoration nav"
-          >
-            <a>Blog</a>
-          </router-link>
+            href="https://medium.com/@msolomon44"
+            target="_blank"
+          >Articles</a>
 
           <!-- RESOURCES -->
-          <router-link
+          <!-- <router-link
             :to="{ name: 'resources' }"
             active-class="active-page"
             class="no-text-decoration nav"
           >
             <a>Resources</a>
-          </router-link>
+          </router-link> -->
 
           <!-- CONTACT -->
           <router-link

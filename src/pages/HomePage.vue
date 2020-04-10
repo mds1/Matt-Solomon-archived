@@ -15,54 +15,92 @@
             <!-- </router-link> -->
             <!-- BLOCKCHAIN DESCRIPTION -->
             <q-item-label class="p-font">
-              Currently building
-              <a
-                class="hyperlink"
-                href="https://floatify.net"
-                target="_blank"
-              >Floatify</a>
-              to enable anyone to easily access decentralized financial protocols. The current
-              version will allow anyone with a US bank account to take advantage of the
-              <router-link
-                class="hyperlink"
-                :to="{name: 'compound-rates'}"
-              >
-                high interest rates
-              </router-link>
-              offered by <a
-                class="hyperlink"
-                href="https://compound.finance"
-                target="_blank"
-              >Compound</a>.
-              <!--  -->
-              <br><br>
-              <!--  -->
-              Graduate of the 2018
-              <a
-                class="hyperlink"
-                href="https://consensys.net/academy/bootcamp/"
-                target="_blank"
-              >ConsenSys Academy Developer Program</a>,
-              with about a year and a half of experience in Ethereum development, including:
+              About two years experience developing on Ethereum.
+              Current and recent projects include:
               <ul>
-                <li>Smart contract development, testing, and deployment</li>
-                <li>Creating web-based front ends to interact with smart contracts</li>
                 <li>
-                  Basic security audits
-                </li>
-                <li>
-                  Decentralized file storage with
                   <a
-                    href="https://ipfs.io"
+                    class="hyperlink"
+                    href="https://ethdashboard.com/"
                     target="_blank"
-                  >IPFS</a>
+                  >ETH Dashboard</a>:
+                  A personalized dashboard showing the Ethereum data and metrics that
+                  you care about. Current metrics include Ether and token prices,
+                  MakerDAO stats, gas prices, address metrics, and more. New data
+                  is added every week.
                 </li>
                 <li>
-                  General advising needs
+                  <a
+                    class="hyperlink"
+                    href="https://beta.floatify.net"
+                    target="_blank"
+                  >Floatify</a>:
+                  An application that enables anyone to easily access decentralized
+                  financial protocols, while feeling like a normal bank account.
+                  Currently it allows users to onboard from dollars to Chai in under
+                  two minutes while providing a web2-like experience.
+                </li>
+                <li>
+                  <a
+                    class="hyperlink"
+                    href="https://www.scopelift.co/blog/fakerdao"
+                    target="_blank"
+                  >FakerDAO</a>:
+                  Developed with <a
+                    class="hyperlink"
+                    href="https://twitter.com/BenDiFrancesco"
+                    target="_blank"
+                  >Ben DiFrancesco</a>, FakerDAO is a minimum viable implementation
+                  of a straightforward concept: pooling MKR tokens and selling their
+                  voting power to the highest bidder.
+                </li>
+                <li>
+                  <a
+                    class="hyperlink"
+                    href="https://github.com/mds1/bancor-fiat-on-ramp"
+                    target="_blank"
+                  >Bancor Fiat On-Ramp</a>:
+                  This tool provides an easy fiat on/off ramp for entering and exiting
+                  Bancor liquidity pools. Users do not need to have a wallet setup, the
+                  Gas Station Network (GSN) is used so users do not need Ether for gas,
+                  and deposits can be made from 43 US states and nearly 30 countries.
+                </li>
+                <li>
+                  <router-link
+                    class="hyperlink"
+                    :to="{name: 'compound-rates'}"
+                  >
+                    Compound Rates
+                  </router-link>: A simple tool showing historical rates from
+                  <a
+                    class="hyperlink"
+                    href="https://compound.finance"
+                    target="_blank"
+                  >Compound</a>, including average interest rates and growth of funds
+                  over a user-specified time-span.
+                </li>
+                <li>
+                  Various explainer articles, including a <a
+                    class="hyperlink"
+                    href="https://medium.com/coinmonks/ethereum-security-analysis-tools-an-introduction-and-comparison-1096194e64d5"
+                    target="_blank"
+                  >comparison of Ethereum security tools</a>, a
+                  <a
+                    class="hyperlink"
+                    href="https://medium.com/floatify/developing-ethereum-smart-contracts-to-interact-with-other-existing-smart-contracts-4053674b31bd"
+                    target="_blank"
+                  >tutorial on forking the mainnet</a>, and an explanation of
+                  <a
+                    class="hyperlink"
+                    href="https://medium.com/floatify/developing-ethereum-smart-contracts-to-interact-with-other-existing-smart-contracts-4053674b31bd"
+                    target="_blank"
+                  >how Compound works</a>,
+
                 </li>
               </ul>
             </q-item-label>
           </q-item-section>
+
           <!-- BLOCKCHAIN IMAGE -->
           <q-item-section thumbnail>
             <!-- <img src="../../src/statics/quasar-logo.png"> -->
@@ -146,55 +184,6 @@
         </q-item>
       </div>
 
-      <!-- BLOG -->
-      <br>
-      <div class="list--list-item shadow-10">
-        <q-item class="row-6">
-          <q-item-section class='q-ma-lg'>
-            <!-- BLOG ROUTER LINK -->
-            <router-link :to="{ name: 'blog'}">
-              <q-item-label
-                class="item-label"
-                overline
-              >BLOG</q-item-label>
-            </router-link>
-            <!-- BLOG DESCRIPTION -->
-            <q-item-label class="p-font">
-              Thoughts, tutorials, and whatever else I feel like
-              writing about
-            </q-item-label>
-          </q-item-section>
-          <!-- BLOG IMAGE -->
-          <q-item-section thumbnail>
-            <!-- <img src="../../src/statics/quasar-logo.png"> -->
-          </q-item-section>
-        </q-item>
-      </div>
-
-      <!-- RESOURCES -->
-      <br>
-      <div class="list--list-item shadow-10">
-        <q-item class="row-6">
-          <q-item-section class='q-ma-lg'>
-            <!-- RESOURCES ROUTER LINK -->
-            <router-link :to="{ name: 'resources'}">
-              <q-item-label
-                class="item-label"
-                overline
-              >RESOURCES</q-item-label>
-            </router-link>
-            <!-- RESOURCES DESCRIPTION -->
-            <q-item-label class="p-font">
-              A collection of websites, articles, tools, and other resources
-              that I've found useful or interesting at some point
-            </q-item-label>
-          </q-item-section>
-          <!-- RESOURCES IMAGE -->
-          <q-item-section thumbnail>
-            <!-- <img src="../../src/statics/quasar-logo.png"> -->
-          </q-item-section>
-        </q-item>
-      </div>
     </q-list>
     <br>
     <br>
@@ -208,6 +197,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+li {
+  margin-bottom: 0.5rem;
+}
+
 .flex {
   flex-direction: column;
 }
