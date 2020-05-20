@@ -4,7 +4,7 @@
     <div class="text-center">
       <h2>Compound</h2>
       <h2>Lending Rates</h2>
-      <h4>Historical lending rates for
+      <h4>Historical APY Data for
         <a
           class="text-h4"
           href="https://compound.finance"
@@ -248,6 +248,9 @@ export default {
       // Plotted data, also an array
       plottedData: [],
 
+      // Growth of 10k plot data
+      growthOf10k: [],
+
       // True once compoundData has been populated
       isDataLoaded: false,
 
@@ -417,7 +420,7 @@ export default {
       } // end for each currency
 
       const layout = {
-        title: 'Compound Interest Rates',
+        title: 'Compound Interest Rates (APY)',
         xaxis: {
           title: 'Date',
         },
@@ -478,7 +481,6 @@ export default {
      * Generate growth of investment plot
      */
     generateGrowthOfInvestmentPlot(supplyTraces) {
-      console.log('supply traces: ', supplyTraces);
       const traces = [];
       for (let j = 0; j < supplyTraces.length; j += 1) {
         const data = supplyTraces[j];
@@ -489,16 +491,13 @@ export default {
         for (let i = 0; i < timestamps.length - 1; i += 1) {
           // In above loop, we use length-1 to ignore the current rate
           const deltaT = (timestamps[i + 1].getTime() - timestamps[i].getTime()) / 1000; // in sec
-          console.log('deltaT: ', deltaT);
           const presentValue = values[values.length - 1];
           const rate = rates[i] / 100 / 365 / 24 / 3600; // per-second interest rate
           const n = 1; // Math.floor(deltaT / 15); // number of times interest applied per period
           const t = deltaT; // number of time periods elapsed
-          console.log(presentValue, rate, n, t);
           const newValue = presentValue * ((1 + rate / n) ** (n * t));
           values.push(newValue);
         }
-        console.log('values: ', values);
 
         traces.push({
           x: timestamps,
@@ -509,6 +508,10 @@ export default {
         });
       }
 
+      // Save off values so we can use them for computing average rates
+      this.growthOf10k = traces;
+
+      // Generate figure
       const layout = {
         title: 'Growth of $10,000',
         xaxis: {
@@ -524,7 +527,7 @@ export default {
     },
 
     /**
-     * Compute and plots averate rates for selected assets
+     * Compute and plots averate rates for selected assets, calculated as CAGR
      */
     generateAverageRatePlot() {
       // Define arrays to hold data
@@ -533,10 +536,38 @@ export default {
       const borrowRates = [];
 
       for (let i = 0; i < this.plottedData.length; i += 1) {
-        // Get rates
+        // Parse out data
         const data = this.plottedData[i];
+        const timestamps = data.x;
         const rates = data.y;
-        const averageRate = mean(rates);
+
+        // Get start and end values
+        // TODO this is very similar to how growth of 10k plot is generated, so refactor
+        // to be more modular
+        const initialValue = 10000;
+        const values = [initialValue];
+        for (let j = 0; j < timestamps.length - 1; j += 1) {
+          // In above loop, we use length-1 to skip last value because we use j+1 for deltas
+          const deltaT = (timestamps[j + 1].getTime() - timestamps[j].getTime()) / 1000; // in sec
+          const presentValue = values[values.length - 1];
+          const rate = rates[j] / 100 / 365 / 24 / 3600; // per-second interest rate
+          const n = 1; // Math.floor(deltaT / 15); // number of times interest applied per period
+          const t = deltaT; // number of time periods elapsed
+          const newValue = presentValue * ((1 + rate / n) ** (n * t));
+          values.push(newValue);
+        }
+
+        const startDate = (new Date(timestamps[0])).getTime() / 1000;
+        const endDate = (new Date(timestamps[timestamps.length - 1])).getTime() / 1000;
+        const secondsElapsed = endDate - startDate;
+
+        const secondsPerYear = 365.25 * 24 * 3600;
+        const numYears = secondsElapsed / secondsPerYear;
+
+        const startValue = values[0];
+        const endValue = values[values.length - 1];
+
+        const averageRate = 100 * (((endValue / startValue) ** (1 / numYears)) - 1);
 
         // Get name data
         const nameComponents = data.name.split(' ');
@@ -575,7 +606,7 @@ export default {
 
       const layout = {
         barmode: 'group',
-        title: 'Average Interest Rates',
+        title: 'Average Interest Rates (APY)',
         xaxis: {
           title: 'Currency',
         },
@@ -647,7 +678,7 @@ export default {
       }
 
       const layout = {
-        title: 'Interest Rate Distribution',
+        title: 'Interest Rate Distribution (APY)',
         xaxis: {
           title: 'Currency',
         },
